@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+    <constant name="struts.devMode" value="true" />
+
+    <package name="wuhao" namespace="/" extends="struts-default">
+        
+        <action name="userAction_*" class="uAction" method="{1}">
+            <result>/result.jsp</result>
+            <result name="result2">/result2.jsp</result>
+        </action>
+    </package>
+
+    <!-- Add packages here -->
+
+</struts>
