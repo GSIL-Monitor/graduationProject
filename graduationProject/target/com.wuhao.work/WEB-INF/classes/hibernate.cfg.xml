@@ -17,6 +17,7 @@
 		<property name="mappingResources">
 			<list>
 				<value>hibernate/User.hbm.xml</value>
+				<value>hibernate/Student.hbm.xml</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
@@ -30,7 +31,7 @@
 				<!-- 格式化sql -->
 				<prop key="hibernate.format_sql">true</prop>
 				<!-- 是否自动更新表 -->
-				<prop key="hibernate.hbm2ddl.auto">create</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
 				<prop key="hibernate.current_session_context_class">thread</prop>
 				<!-- 最大抓取深度，如果为0，则关闭默认的外连接抓取。建议值为0-3 -->
 				<prop key="hibernate.max_fetch_depth">1</prop>

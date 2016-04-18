@@ -7,12 +7,24 @@
 
     <constant name="struts.devMode" value="true" />
 
-    <package name="wuhao" namespace="/" extends="struts-default">
-        
-        <action name="userAction_*" class="uAction" method="{1}">
-            <result>/result.jsp</result>
-            <result name="result2">/result2.jsp</result>
+    <package name="user" namespace="/" extends="struts-default">
+        <action name="userAction_*" class="userAction" method="{1}">
+            <result>/login.jsp</result>
+            <result name="login">/login.jsp</result>
+            <result name="STUDENT">/student/index.jsp</result>
+            <result name="TEACHER">/teacher/index.jsp</result>
+            <result name="ADMIN">/admin/index.jsp</result>
+            <result name="STUDENT_UPDATE">/student/passchange.jsp</result>
+            <result name="TEACHER_UPDATE">/teacher/passchange</result>
+            <result name="ADMIN_UPDATE">/admin/passchange</result>
         </action>
+        <action name="studentAction_*" class="studentAction" method="{1}">
+            <result>/student/index.jsp</result>
+            <result name="login">/student/index.jsp</result>
+        </action>
+    </package>
+    <package name="student" namespace="/"  extends="struts-default">
+
     </package>
 
     <!-- Add packages here -->

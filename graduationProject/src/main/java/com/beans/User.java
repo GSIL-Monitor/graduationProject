@@ -1,16 +1,20 @@
 
 package com.beans;
+
+import java.util.UUID;
+
 public class User {
 
-	private int id;
+	private long id;
 	private String username;
 	private String password;
+	private int type;
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -29,12 +33,21 @@ public class User {
 		this.password = password;
 	}
 
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
+	}
+
 	@Override
 	public String toString() {
 		return "User{" +
 				"id=" + id +
 				", username='" + username + '\'' +
 				", password='" + password + '\'' +
+				", type=" + type +
 				'}';
 	}
 }

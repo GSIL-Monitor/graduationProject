@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping 
+	package="com.beans">
+
+	<class name="Student" table="t_student">
+		<id name="id">
+			<generator class="native"/>
+		</id>
+
+		<property name="stuNo" column="stu_no" type="java.lang.String" length="10"/>
+		
+		<property name="name" type="java.lang.String" length="15" column="name"/>
+
+		<property name="collegeName"  column="college_name" type="java.lang.String" length="15"/>
+
+		<property name="majorName" column="major_name" type="java.lang.String" length="15"/>
+
+		<property name="grade" type="java.lang.String" length="10"/>
+
+		<property name="className" type="java.lang.String" column="class_name" length="10"/>
+
+		<property name="telNo" type="java.lang.String" column="tel_no" length="15"/>
+
+		<property name="email" type="java.lang.String" length="20"/>
+
+		<property name="qqNo" column="qq_no" type="java.lang.String" length="15"/>
+
+		<property name="uid" type="java.lang.Long"/>
+	</class>
+	
+</hibernate-mapping>

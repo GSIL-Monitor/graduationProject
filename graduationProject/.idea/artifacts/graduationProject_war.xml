@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="graduationProject:war">
-    <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="com.wuhao.work.war">
-      <element id="artifact" artifact-name="graduationProject:war exploded" />
-    </root>
-  </artifact>
-</component>

@@ -9,13 +9,25 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
     <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
-    <bean id="uAction" class="com.actions.UserAction" scope="prototype">
-        <property name="userDao" ref="userDao"/>
+    <bean id="userAction" class="com.actions.UserAction" scope="prototype">
+        <property name="userService" ref="userService"/>
     </bean>
-
     <bean id="userDao" class="com.dao.impl.UserDaoImpl">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
-   
-   
+   <bean id="userService" class="com.service.serviceImpl.UserServiceImpl">
+       <property name="userDao" ref="userDao"/>
+   </bean>
+
+    <bean id="studentAction" class="com.actions.StudentAction">
+        <property name="studentService" ref="studentService"/>
+    </bean>
+
+    <bean id="studentService" class="com.service.serviceImpl.StudentServiceImpl">
+        <property name="studentDao" ref="studentDao"/>
+    </bean>
+    <bean id="studentDao" class="com.dao.impl.StudentDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
 </beans>
