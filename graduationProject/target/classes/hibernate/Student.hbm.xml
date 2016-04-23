@@ -10,7 +10,7 @@
 			<generator class="native"/>
 		</id>
 
-		<property name="stuNo" column="stu_no" type="java.lang.String" length="10"/>
+		<property name="stuNo" column="stu_no" type="java.lang.String" length="10" />
 		
 		<property name="name" type="java.lang.String" length="15" column="name"/>
 
@@ -28,7 +28,11 @@
 
 		<property name="qqNo" column="qq_no" type="java.lang.String" length="15"/>
 
-		<property name="uid" type="java.lang.Long"/>
+		<property name="uid" type="java.lang.String" length="40"/>
+
+		<property name="status" type="int" />
+
+		<property name="topic_id" type="java.lang.String" length="40"/>
 	</class>
 	
 </hibernate-mapping>

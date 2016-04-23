@@ -48,7 +48,7 @@ public class StudentDaoImpl implements StudentDao{
         transaction=session.beginTransaction();
         String selectHql="select stu from Student as stu where stu.uid=?";
         Query query=session.createQuery(selectHql);
-        query.setLong(0, student.getUid());
+        query.setString(0,student.getUid());
         List<Student> list=query.list();
         if (!list.isEmpty()){
             Student studentSql=list.get(0);
@@ -59,5 +59,18 @@ public class StudentDaoImpl implements StudentDao{
         }
         transaction.commit();
         session.close();
+    }
+    public Student getStudent(String uid) throws Exception {
+        Session session;//hibernate会话
+        session=sessionFactory.openSession();
+        String selectHql="select stu from Student as stu where stu.uid=?";
+        Query query=session.createQuery(selectHql);
+        query.setString(0, uid);
+        List<Student> list=query.list();
+        session.close();
+        if (!list.isEmpty()){
+            return list.get(0);
+        }
+        return null;
     }
 }

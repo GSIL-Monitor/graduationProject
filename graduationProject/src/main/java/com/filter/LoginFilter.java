@@ -33,7 +33,6 @@ public class LoginFilter implements Filter {
 
         // 从session里取
         User user = (User) session.getAttribute("user");
-
         // 登陆页面无需过滤
         if(path.indexOf("/login.jsp") > -1) {
             chain.doFilter(servletRequest, servletResponse);

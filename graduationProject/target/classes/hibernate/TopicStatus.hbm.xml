@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping 
+	package="com.beans">
+
+	<class name="TopicStatus" table="t_topic_status">
+		<id name="id">
+			<generator class="native"/>
+		</id>
+
+		<property name="topicId" column="topic_id" type="java.lang.String" length="40"/>
+
+		<property name="topicBegin" column="topic_begin" type="int" />
+
+		<property name="topicMid" column="topic_mid" type="int"/>
+
+		<property name="topicFinal" column="topic_final" type="int"/>
+
+		<property name="beginScore" column="begin_score" type="int"/>
+
+		<property name="midScore" column="mid_score" type="int"/>
+
+		<property name="finalScore" column="final_score" type="int"/>
+
+	</class>
+	
+</hibernate-mapping>

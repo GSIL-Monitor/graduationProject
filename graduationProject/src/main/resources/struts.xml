@@ -6,6 +6,7 @@
 <struts>
 
     <constant name="struts.devMode" value="true" />
+    <constant name="struts.i18n.encoding" value="UTF-8"/>
 
     <package name="user" namespace="/" extends="struts-default">
         <action name="userAction_*" class="userAction" method="{1}">
@@ -15,18 +16,88 @@
             <result name="TEACHER">/teacher/index.jsp</result>
             <result name="ADMIN">/admin/index.jsp</result>
             <result name="STUDENT_UPDATE">/student/passchange.jsp</result>
-            <result name="TEACHER_UPDATE">/teacher/passchange</result>
-            <result name="ADMIN_UPDATE">/admin/passchange</result>
-        </action>
-        <action name="studentAction_*" class="studentAction" method="{1}">
-            <result>/student/index.jsp</result>
-            <result name="login">/student/index.jsp</result>
+            <result name="TEACHER_UPDATE">/teacher/passchange.jsp</result>
+            <result name="ADMIN_UPDATE">/admin/passchange.jsp</result>
         </action>
     </package>
     <package name="student" namespace="/"  extends="struts-default">
-
+        <action name="studentAction_*" class="studentAction" method="{1}">
+            <result>/student/index.jsp</result>
+            <result name="login">/student/index.jsp</result>
+            <result name="info">/student/info.jsp</result>
+            <result name="messageDetail">/messageDetail.jsp</result>
+            <result name="message">/student/message.jsp</result>
+            <result name="choice">/student/tables.jsp</result>
+            <result name="begin">/student/topicBegin.jsp</result>
+            <result name="beginRead">/student/topicBeginRead.jsp</result>
+            <result name="mid">/student/topicMid.jsp</result>
+            <result name="midRead">/student/topicMidRead.jsp</result>
+            <result name="final">/student/topicFinal.jsp</result>
+            <result name="change">/student/passchange.jsp</result>
+            <result name="home">/student/index.jsp</result>
+        </action>
     </package>
-
+    <package name="teacher" namespace="/"  extends="struts-default">
+        <action name="teacherAction_*" class="teacherAction" method="{1}">
+            <result>/teacher/index.jsp</result>
+            <result name="login">/teacher/index.jsp</result>
+            <result name="info">/teacher/info.jsp</result>
+            <result name="messageDetail">/teacher/messageDetail.jsp</result>
+            <result name="message">/teacher/message.jsp</result>
+            <result name="choice">/teacher/tables.jsp</result>
+            <result name="begin">/teacher/topicBeginList.jsp</result>
+            <result name="beginRead">/teacher/topicBeginListRead.jsp</result>
+            <result name="mid">/teacher/topicMidList.jsp</result>
+            <result name="midRead">/teacher/topicMidListRead.jsp</result>
+            <result name="final">/teacher/topicFinalList.jsp</result>
+            <result name="change">/teacher/passchange.jsp</result>
+            <result name="home">/teacher/index.jsp</result>
+            <result name="process">/teacher/studentsProgress.jsp</result>
+            <result name="add">/teacher/topicInput.jsp</result>
+            <result name="studentTopic">/teacher/studentSelect.jsp</result>
+            <result name="studentSelect">/teacher/studentSelectDetail.jsp</result>
+            <result name="update">/teacher/topicUpdateList.jsp</result>
+        </action>
+    </package>
+    <package name="topic" namespace="/"  extends="struts-default">
+        <action name="topicAction_*" class="topicAction" method="{1}">
+            <result name="login">/login.jsp</result>
+            <result name="detail" >/topicDetail.jsp</result>
+            <result name="BEGIN_CHECK">/teacher/topicBegin.jsp</result>
+            <result name="BEGIN_READ">/teacher/topicBeginRead.jsp</result>
+            <result name="MID_CHECK">/teacher/topicMid.jsp</result>
+            <result name="FINAL_CHECK">/teacher/topicFinal.jsp</result>
+            <result name="MID_READ">/teacher/topicMIdRead.jsp</result>
+            <result name="home">/teacher/index.jsp</result>
+        </action>
+    </package>
+    <package name="message" namespace="/"  extends="struts-default">
+        <action name="messageAction_*" class="messageAction" method="{1}">
+            <result name="login">/login.jsp</result>
+            <result name="detail">/messageDetail.jsp</result>
+        </action>
+    </package>
+    <package name="admin" namespace="/"  extends="struts-default">
+        <action name="adminAction_*" class="adminAction" method="{1}">
+            <result name="STUDENT_PER">/admin/stuPermission.jsp</result>
+            <result name="TEACHER_PER">/admin/teaPermission.jsp</result>
+            <result name="STU_CREATE">/admin/studentInput.jsp</result>
+            <result name="STU_UPDATE">/admin/stuChangeList.jsp</result>
+            <result name="TEA_CREATE">/admin/teacherInput.jsp</result>
+            <result name="TEA_UPDATE">/admin/teaChangeList.jsp</result>
+            <result name="login">/login.jsp</result>
+            <result name="home">/admin/index.jsp</result>
+            <result name="change">/admin/passchange.jsp</result>
+            <result name="MSG_CRE">/admin/messageCreate.jsp</result>
+            <result name="CRE_MSG">/admin/index.jsp</result>
+            <result name="MSG_LIST">/admin/msgChangeList.jsp</result>
+            <result name="MSG_DEL" type="chain">adminAction_msgList</result>
+            <result name="check">/admin/topicCheckList.jsp</result>
+            <result name="topicCheck" type="chain">adminAction_check</result>
+            <result name="STU_DELETE" type="chain">adminAction_stuUpdate</result>
+            <result name="TEA_DELETE" type="chain">adminAction_teaUpdate</result>
+        </action>
+    </package>
     <!-- Add packages here -->
 
 </struts>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping 
+	package="com.beans">
+
+	<class name="Report" table="t_report">
+		<id name="id">
+			<generator class="native"/>
+		</id>
+
+		<property name="topic_id" type="java.lang.String" length="40"/>
+		<property name="beginReport" type="text" column="begin_report"/>
+		<property name="midReport" type="text" column="mid_report"/>
+	</class>
+	
+</hibernate-mapping>

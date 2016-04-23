@@ -10,11 +10,15 @@
 			<generator class="native"/>
 		</id>
 
-		<property name="password" type="java.lang.String" length="20"/>
+		<property name="password" type="java.lang.String" length="30"/>
 		
-		<property name="username" type="java.lang.String" length="20"/>
+		<property name="username" type="java.lang.String" length="30"/>
 
 		<property name="type" type="int" length="2"/>
+
+		<property name="status" type="int"/>
+
+		<property name="user_id" type="java.lang.String" length="40"/>
 
 	</class>
 	

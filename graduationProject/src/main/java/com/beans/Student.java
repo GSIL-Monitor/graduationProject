@@ -5,6 +5,8 @@ package com.beans;
  */
 public class Student {
     private long id;
+    private String topic_id;
+    private String uid;
     private String stuNo;
     private String name;
     private String collegeName;
@@ -14,7 +16,7 @@ public class Student {
     private String telNo;
     private String email;
     private String qqNo;
-    private long uid;
+    private int status;
 
     public long getId() {
         return id;
@@ -96,18 +98,39 @@ public class Student {
         this.qqNo = qqNo;
     }
 
-    public long getUid() {
+    public String getUid() {
         return uid;
     }
 
-    public void setUid(long uid) {
+    public void setUid(String uid) {
         this.uid = uid;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public String getTopic_id() {
+        return topic_id;
+    }
+
+    public void setTopic_id(String topic_id) {
+        this.topic_id = topic_id;
+    }
+
+    public Student() {
+        this.status = 1;
     }
 
     @Override
     public String toString() {
         return "Student{" +
                 "id=" + id +
+                ", topic_id='" + topic_id + '\'' +
                 ", stuNo='" + stuNo + '\'' +
                 ", name='" + name + '\'' +
                 ", collegeName='" + collegeName + '\'' +
@@ -117,7 +140,8 @@ public class Student {
                 ", telNo='" + telNo + '\'' +
                 ", email='" + email + '\'' +
                 ", qqNo='" + qqNo + '\'' +
-                ", uId='" + uid + '\'' +
+                ", status=" + status +
+                ", uid='" + uid + '\'' +
                 '}';
     }
 }

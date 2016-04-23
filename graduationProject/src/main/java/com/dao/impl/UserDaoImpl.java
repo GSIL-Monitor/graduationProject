@@ -34,9 +34,9 @@ public class UserDaoImpl  implements UserDao {
 		Transaction transaction; //hiberante事务
 		session=sessionFactory.openSession();
 		transaction=session.beginTransaction();
-		String selectHql="select u from User as u where u.id=?";
+		String selectHql="select u from User as u where u.user_id=?";
 		Query query=session.createQuery(selectHql);
-		query.setLong(0,user.getId());
+		query.setString(0, user.getUser_id());
 		List<User> list=query.list();
 		if (!list.isEmpty()){
 			User userSql=list.get(0);
@@ -58,7 +58,7 @@ public class UserDaoImpl  implements UserDao {
 	public User getUser(String username,String password) throws Exception{
 		Session session;//hibernate会话
 		session=sessionFactory.openSession();
-		String selectHql="select u from User as u where u.username=? and u.password=?";
+		String selectHql="select u from User as u where u.username=? and u.password=? and u.status=1";
 		Query query=session.createQuery(selectHql);
 		query.setString(0,username);
 		query.setString(1,password);

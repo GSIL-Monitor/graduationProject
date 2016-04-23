@@ -16,14 +16,13 @@
 		<link rel="stylesheet" href="../css/unicorn.grey.css" class="skin-color" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
 	<body>
-
 	<div id="header">
 		<h1><a href="./dashboard.html">我的桌面</a></h1>
 	</div>
 	<div id="user-nav" class="navbar navbar-inverse">
 		<ul class="nav btn-group">
-			<li class="btn btn-inverse"><a title="" href="<%=path%>/student/info.jsp"><i class="icon icon-user"></i> <span class="text">个人信息</span></a></li>
-			<li class="btn btn-inverse"><a title="" href="<%=path%>/student/passchange.jsp"><i class="icon icon-user"></i> <span class="text">密码修改</span></a></li>
+			<li class="btn btn-inverse"><a title="" href="studentAction_info"><i class="icon icon-user"></i> <span class="text">个人信息</span></a></li>
+			<li class="btn btn-inverse"><a title="" href="studentAction_change"><i class="icon icon-user"></i> <span class="text">密码修改</span></a></li>
 			<li class="btn btn-inverse dropdown" id="menu-messages"><a href="#" data-toggle="dropdown" data-target="#menu-messages" class="dropdown-toggle"><i class="icon icon-envelope"></i> <span class="text">邮箱</span><b class="caret"></b></a>
 				<ul class="dropdown-menu">
 					<li><a class="sAdd" title="" href="#">发送信息</a></li>
@@ -36,21 +35,21 @@
 	</div>
 
 	<div id="sidebar">
-		<a href="#" class="visible-phone"><i class="icon icon-home"></i> 我的桌面</a>
+		<a href="studentAction_home" class="visible-phone"><i class="icon icon-home"></i> 我的桌面</a>
 		<ul>
-			<li class="active"><a href="<%=path%>/student/index.jsp"><i class="icon icon-home"></i> <span>我的桌面</span></a></li>
-			<li><a href="<%=path%>/student/tables.jsp"><i class="icon icon-th"></i> <span>学生选题</span></a></li>
+			<li class="active"><a href="studentAction_home"><i class="icon icon-home"></i> <span>我的桌面</span></a></li>
+			<li><a href="studentAction_choice"><i class="icon icon-th"></i> <span>学生选题</span></a></li>
 			<li class="submenu">
 				<a href="#"><i class="icon icon-th-list"></i> <span>撰写环节及任务</span> <span class="label">5</span></a>
 				<ul>
-					<li><a href="<%=path%>/student/topicBegin.jsp">填写开题计划</a></li>
-					<li><a href="<%=path%>/student/form-common.html">查看开题计划</a></li>
-					<li><a href="<%=path%>/student/form-common.html">填写中期检查</a></li>
-					<li><a href="<%=path%>/student/form-validation.html">查看中期检查</a></li>
-					<li><a href="<%=path%>/student/form-wizard.html">论文终稿提交</a></li>
+					<li><a href="studentAction_begin">填写开题计划</a></li>
+					<li><a href="studentAction_beginRead">查看开题计划</a></li>
+					<li><a href="studentAction_mid">填写中期检查</a></li>
+					<li><a href="studentAction_midRead">查看中期检查</a></li>
+					<li><a href="studentAction_topFinal">论文终稿提交</a></li>
 				</ul>
 			</li>
-			<li><a href="grid.html"><i class="icon icon-th-list"></i> <span>查看通知与下载</span></a></li>
+			<li><a href="studentAction_message"><i class="icon icon-th-list"></i> <span>查看通知与下载</span></a></li>
 		</ul>
 
 	</div>
@@ -62,12 +61,13 @@
 		<a href="#blue" style="background-color: #2D2F57;"></a>
 		<a href="#red" style="background-color: #673232;"></a>
 	</div>
+
 		<div id="content">
 			<div id="content-header">
 				<h1>学生选题</h1>
 			</div>
 			<div id="breadcrumb">
-				<a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
+				<a href="studentAction_home" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
 				<a href="#" class="current">学生选题</a>
 			</div>
 			<div class="container-fluid">
@@ -82,18 +82,16 @@
 									<tr>
 										<th>论文题目</th>
 										<th>指导老师</th>
-										<th>题目类别</th>
-										<th>题目所属专业</th>
+										<th>题目类型</th>
 										<th></th>
 									</tr>
 									</thead>
 									<tbody>
 									<tr class="gradeX">
-										<td>Trident</td>
+										<td><a href="topicAction_detail?topic_id" target="_blank">Trident</a></td>
 										<td>Internet Explorer 4.0</td>
 										<td>Win 95+</td>
-										<td class="center">4</td>
-										<td><a href="topicAction_check?topic_id=">［选题］</a></td>
+										<td><a href="topicAction_select">[选题]</a></td>
 									</tr>
 									<tr class="gradeC">
 										<td>Trident</td>

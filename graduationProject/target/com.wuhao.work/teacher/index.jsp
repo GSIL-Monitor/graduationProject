@@ -18,48 +18,45 @@
 			<h1><a href="./dashboard.html">我的桌面</a></h1>
 		</div>
 		<div id="user-nav" class="navbar navbar-inverse">
-            <ul class="nav btn-group">
-                <li class="btn btn-inverse"><a title="" href="#"><i class="icon icon-user"></i> <span class="text">个人信息</span></a></li>
-                <li class="btn btn-inverse dropdown" id="menu-messages"><a href="#" data-toggle="dropdown" data-target="#menu-messages" class="dropdown-toggle"><i class="icon icon-envelope"></i> <span class="text">Messages</span> <span class="label label-important">5</span> <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a class="sAdd" title="" href="#">new message</a></li>
-                        <li><a class="sInbox" title="" href="#">inbox</a></li>
-                        <li><a class="sOutbox" title="" href="#">outbox</a></li>
-                        <li><a class="sTrash" title="" href="#">trash</a></li>
-                    </ul>
-                </li>
-                <li class="btn btn-inverse"><a title="" href="../login.jsp"><i class="icon icon-share-alt"></i> <span class="text">退出登录</span></a></li>
-            </ul>
-        </div>
+			<ul class="nav btn-group">
+				<li class="btn btn-inverse"><a title="" href="teacherAction_info"><i class="icon icon-user"></i> <span class="text">个人信息</span></a></li>
+				<li class="btn btn-inverse"><a title="" href="teacherAction_change"><i class="icon icon-user"></i> <span class="text">密码修改</span></a></li>
+				<li class="btn btn-inverse dropdown" id="menu-messages"><a href="#" data-toggle="dropdown" data-target="#menu-messages" class="dropdown-toggle"><i class="icon icon-envelope"></i> <span class="text">邮箱</span><b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a class="sAdd" title="" href="#">发送信息</a></li>
+						<li><a class="sInbox" title="" href="#">收件箱</a></li>
+						<li><a class="sOutbox" title="" href="#">已发出信息</a></li>
+					</ul>
+				</li>
+				<li class="btn btn-inverse"><a title="" href="userAction_logout"><i class="icon icon-share-alt"></i> <span class="text">退出登录</span></a></li>
+			</ul>
+		</div>
             
 		<div id="sidebar">
-			<a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
+			<a href="#" class="visible-phone"><i class="icon icon-home"></i> 我的桌面</a>
 			<ul>
-				<li class="active"><a href="index.jsp"><i class="icon icon-home"></i> <span>Dashboard</span></a></li>
+				<li class="active"><a href="teacherAction_home"><i class="icon icon-home"></i> <span>我的桌面</span></a></li>
 				<li class="submenu">
-					<a href="#"><i class="icon icon-th-list"></i> <span>Form elements</span> <span class="label">3</span></a>
+					<a href="#"><i class="icon icon-th-list"></i> <span>论文管理</span> <span class="label">3</span></a>
 					<ul>
-						<li><a href="form-common.html">Common elements</a></li>
-						<li><a href="form-validation.html">Validation</a></li>
-						<li><a href="form-wizard.html">Wizard</a></li>
+						<li><a href="teacherAction_add">论文录入</a></li>
+						<li><a href="teacherAction_updateTopic">论文修改</a></li>
+						<li><a href="teacherAction_studentTopic">给学生选题</a></li>
 					</ul>
 				</li>
-				<li><a href="tables.html"><i class="icon icon-th"></i> <span>Tables</span></a></li>
-				<li><a href="grid.html"><i class="icon icon-th-list"></i> <span>Grid Layout</span></a></li>
 				<li class="submenu">
-					<a href="#"><i class="icon icon-file"></i> <span>Sample pages</span> <span class="label">4</span></a>
+					<a href="#"><i class="icon icon-file"></i> <span>论文过程管理</span> <span class="label">6</span></a>
 					<ul>
-						<li><a href="invoice.html">Invoice</a></li>
-						<li><a href="chat.html">Support chat</a></li>
-						<li><a href="calendar.html">Calendar</a></li>
-						<li><a href="gallery.html">Gallery</a></li>
+						<li><a href="teacherAction_process">学生进度查看</a></li>
+						<li><a href="teacherAction_begin">审核学生开题计划</a></li>
+						<li><a href="teacherAction_beginRead">查看学生开题计划</a></li>
+						<li><a href="teacherAction_mid">审核学生中期计划</a></li>
+						<li><a href="teacherAction_midRead">查看学生中期计划</a></li>
+						<li><a href="teacherAction_topFinal">审核学生终稿</a></li>
 					</ul>
 				</li>
 				<li>
-					<a href="charts.html"><i class="icon icon-signal"></i> <span>Charts &amp; graphs</span></a>
-				</li>
-				<li>
-					<a href="widgets.html"><i class="icon icon-inbox"></i> <span>Widgets</span></a>
+					<a href="teacherAction_message"><i class="icon icon-signal"></i> <span>查看通知与下载</span></a>
 				</li>
 			</ul>
 		
@@ -75,13 +72,7 @@
 		
 		<div id="content">
 			<div id="content-header">
-				<h1>Dashboard</h1>
-				<div class="btn-group">
-					<a class="btn btn-large tip-bottom" title="Manage Files"><i class="icon-file"></i></a>
-					<a class="btn btn-large tip-bottom" title="Manage Users"><i class="icon-user"></i></a>
-					<a class="btn btn-large tip-bottom" title="Manage Comments"><i class="icon-comment"></i><span class="label label-important">5</span></a>
-					<a class="btn btn-large tip-bottom" title="Manage Orders"><i class="icon-shopping-cart"></i></a>
-				</div>
+				<h1>我的桌面</h1>
 			</div>
 			<div id="breadcrumb">
 				<a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
@@ -89,43 +80,50 @@
 			</div>
 			<div class="container-fluid">
 				<div class="row-fluid">
-					<div class="span12 center" style="text-align: center;">					
+					<div class="span12 center" style="text-align: center;">
 						<ul class="stat-boxes">
 							<li>
-								<div class="left peity_bar_good"><span>2,4,9,7,12,10,12</span>+20%</div>
+								<div class="left peity_bar_good"><br/><br/><label>提交论文题目</label></div>
 								<div class="right">
-									<strong>36094</strong>
-									Visits
+									<label>起:2015-11-23</label>
+									<label>止:2015-12-3</label>
 								</div>
 							</li>
 							<li>
-								<div class="left peity_bar_neutral"><span>20,15,18,14,10,9,9,9</span>0%</div>
+								<div class="left peity_bar_good"><br/><br/><label>为学生选题</label></div>
 								<div class="right">
-									<strong>1433</strong>
-									Users
+									<label>起:2015-11-23</label>
+									<label>止:2015-12-3</label>
 								</div>
 							</li>
 							<li>
-								<div class="left peity_bar_bad"><span>3,5,9,7,12,20,10</span>-50%</div>
+								<div class="left peity_bar_good"><br/><br/><label>开题报告审核</label></div>
 								<div class="right">
-									<strong>8650</strong>
-									Orders
+									<label>起:2015-11-23</label>
+									<label>止:2015-12-3</label>
 								</div>
 							</li>
 							<li>
-								<div class="left peity_line_good"><span>12,6,9,23,14,10,17</span>+70%</div>
+								<div class="left peity_bar_good"><br/><br/><label>中期报告审核</label></div>
 								<div class="right">
-									<strong>8650</strong>
-									Orders
+									<label>起:2015-11-23</label>
+									<label>止:2015-12-3</label>
+								</div>
+							</li>
+							<li>
+								<div class="left peity_bar_good"><br/><br/><label>终期论文审核</label></div>
+								<div class="right">
+									<label>起:2015-11-23</label>
+									<label>止:2015-12-3</label>
 								</div>
 							</li>
 						</ul>
-					</div>	
+					</div>
 				</div>
 				<div class="row-fluid">
 					<div class="span12">
 						<div class="alert alert-info">
-							Welcome in the <strong>Unicorn Admin Theme</strong>. Don't forget to check all the pages!
+							欢迎进入 <strong> 毕业论文管理系统 </strong>. 请在规定时间内操作，以免造成不必要的麻烦!
 							<a href="#" data-dismiss="alert" class="close">×</a>
 						</div>
 						<div class="widget-box">

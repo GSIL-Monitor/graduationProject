@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping 
+	package="com.beans">
+
+	<class name="Message" table="t_message">
+		<id name="id">
+			<generator class="native"/>
+		</id>
+
+		<property name="title" type="java.lang.String" length="100"/>
+
+		<property name="content" type="text"/>
+
+		<property name="createAt" type="java.lang.Integer" />
+
+		<property name="accessTimes" type="integer" column="access_times" />
+
+		<property name="type" type="java.lang.String" length="10"/>
+
+		<property name="status" type="int" />
+
+		<property name="isHaveDoc" column="is_have_doc" type="int"/>
+
+		<property name="docName" column="doc_name" type="java.lang.String" length="30"/>
+	</class>
+	
+</hibernate-mapping>

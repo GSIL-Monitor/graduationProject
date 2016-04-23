@@ -16,15 +16,21 @@
 		<link rel="stylesheet" href="../css/select2.css" />
 		<link rel="stylesheet" href="../css/unicorn.main.css" />
 		<link rel="stylesheet" href="../css/unicorn.grey.css" class="skin-color" />
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+		<script type="text/javascript" charset="utf-8" src="../ueditor.config.js"></script>
+		<script type="text/javascript" charset="utf-8" src="../ueditor.all.min.js"> </script>
+		<!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
+		<!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
+		<script type="text/javascript" charset="utf-8" src="../lang/zh-cn/zh-cn.js"></script>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	</head>
 	<body>
 	<div id="header">
 		<h1><a href="./dashboard.html">我的桌面</a></h1>
 	</div>
 	<div id="user-nav" class="navbar navbar-inverse">
 		<ul class="nav btn-group">
-			<li class="btn btn-inverse"><a title="" href="<%=path%>/student/info.jsp"><i class="icon icon-user"></i> <span class="text">个人信息</span></a></li>
-			<li class="btn btn-inverse"><a title="" href="<%=path%>/student/passchange.jsp"><i class="icon icon-user"></i> <span class="text">密码修改</span></a></li>
+			<li class="btn btn-inverse"><a title="" href="studentAction_info"><i class="icon icon-user"></i> <span class="text">个人信息</span></a></li>
+			<li class="btn btn-inverse"><a title="" href="studentAction_change"><i class="icon icon-user"></i> <span class="text">密码修改</span></a></li>
 			<li class="btn btn-inverse dropdown" id="menu-messages"><a href="#" data-toggle="dropdown" data-target="#menu-messages" class="dropdown-toggle"><i class="icon icon-envelope"></i> <span class="text">邮箱</span><b class="caret"></b></a>
 				<ul class="dropdown-menu">
 					<li><a class="sAdd" title="" href="#">发送信息</a></li>
@@ -37,21 +43,21 @@
 	</div>
 
 	<div id="sidebar">
-		<a href="#" class="visible-phone"><i class="icon icon-home"></i> 我的桌面</a>
+		<a href="studentAction_home" class="visible-phone"><i class="icon icon-home"></i> 我的桌面</a>
 		<ul>
-			<li class="active"><a href="<%=path%>/student/index.jsp"><i class="icon icon-home"></i> <span>我的桌面</span></a></li>
-			<li><a href="<%=path%>/student/tables.jsp"><i class="icon icon-th"></i> <span>学生选题</span></a></li>
+			<li class="active"><a href="studentAction_home"><i class="icon icon-home"></i> <span>我的桌面</span></a></li>
+			<li><a href="studentAction_choice"><i class="icon icon-th"></i> <span>学生选题</span></a></li>
 			<li class="submenu">
 				<a href="#"><i class="icon icon-th-list"></i> <span>撰写环节及任务</span> <span class="label">5</span></a>
 				<ul>
-					<li><a href="<%=path%>/student/topicBegin.jsp">填写开题计划</a></li>
-					<li><a href="<%=path%>/student/form-common.html">查看开题计划</a></li>
-					<li><a href="<%=path%>/student/form-common.html">填写中期检查</a></li>
-					<li><a href="<%=path%>/student/form-validation.html">查看中期检查</a></li>
-					<li><a href="<%=path%>/student/form-wizard.html">论文终稿提交</a></li>
+					<li><a href="studentAction_begin">填写开题计划</a></li>
+					<li><a href="studentAction_beginRead">查看开题计划</a></li>
+					<li><a href="studentAction_mid">填写中期检查</a></li>
+					<li><a href="studentAction_midRead">查看中期检查</a></li>
+					<li><a href="studentAction_topFinal">论文终稿提交</a></li>
 				</ul>
 			</li>
-			<li><a href="grid.html"><i class="icon icon-th-list"></i> <span>查看通知与下载</span></a></li>
+			<li><a href="studentAction_message"><i class="icon icon-th-list"></i> <span>查看通知与下载</span></a></li>
 		</ul>
 
 	</div>
@@ -69,12 +75,24 @@
 				<h1>填写开题计划</h1>
 			</div>
 			<div id="breadcrumb">
-				<a href="index.jsp" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
+				<a href="<%=path%>/studentAction_home" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
 				<a href="#" class="tip-bottom">撰写环节及任务</a>
 				<a href="#" class="current">填写开题计划</a>
 			</div>
 			<div class="container-fluid">
+				<form action="topicAction_beginSave" method="post" class="form-horizontal" name="basic_validate" id="basic_validate" novalidate="novalidate">
+					<!-- 加载编辑器的容器 -->
+					<script id="container" name="content" type="text/plain">
+					这里写你的初始化内容
+					</script>
+					<div class="control-group">
+						<label class="control-label">老师意见: 通过</label>
+					</div>
+					<div class="form-actions">
+						<input type="submit" value="提交" class="btn btn-primary" />
+					</div>
 
+				</form>
 
 				<div class="row-fluid">
 					<div id="footer" class="span12">
@@ -83,16 +101,22 @@
 				</div>
 			</div>
 		</div>
-		
-
-            <script src="../js/jquery.min.js"></script>
-            <script src="../js/jquery.ui.custom.js"></script>
-            <script src="../js/bootstrap.min.js"></script>
-            <script src="../js/bootstrap-colorpicker.js"></script>
-            <script src="../js/bootstrap-datepicker.js"></script>
-            <script src="../js/jquery.uniform.js"></script>
-            <script src="../js/select2.min.js"></script>
-            <script src="../js/unicorn.js"></script>
-            <script src="../js/unicorn.form_common.js"></script>
+	<!-- 配置文件 -->
+	<script type="text/javascript" src="../ueditor.config.js"></script>
+	<!-- 编辑器源码文件 -->
+	<script type="text/javascript" src="../ueditor.all.js"></script>
+	<!-- 实例化编辑器 -->
+	<script type="text/javascript">
+		var editor = UE.getEditor('container');
+	</script>
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/jquery.ui.custom.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/bootstrap-colorpicker.js"></script>
+	<script src="../js/bootstrap-datepicker.js"></script>
+	<script src="../js/jquery.uniform.js"></script>
+	<script src="../js/select2.min.js"></script>
+	<script src="../js/unicorn.js"></script>
+	<script src="../js/unicorn.form_common.js"></script>
 	</body>
 </html>

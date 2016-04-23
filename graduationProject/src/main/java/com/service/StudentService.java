@@ -12,7 +12,9 @@ public interface StudentService {
 
     public void update(Student student) ;
 
-    public void add(Student student) ;
+    public void add(Student student,User user) ;
+
+    public Student getStudent(String uid);
 
     public List queryall() ;
 

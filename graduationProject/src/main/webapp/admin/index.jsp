@@ -16,48 +16,48 @@
 			<h1><a href="./dashboard.html">我的桌面</a></h1>
 		</div>
 		<div id="user-nav" class="navbar navbar-inverse">
-            <ul class="nav btn-group">
-                <li class="btn btn-inverse"><a title="" href="#"><i class="icon icon-user"></i> <span class="text">个人信息</span></a></li>
-                <li class="btn btn-inverse dropdown" id="menu-messages"><a href="#" data-toggle="dropdown" data-target="#menu-messages" class="dropdown-toggle"><i class="icon icon-envelope"></i> <span class="text">Messages</span> <span class="label label-important">5</span> <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a class="sAdd" title="" href="#">new message</a></li>
-                        <li><a class="sInbox" title="" href="#">inbox</a></li>
-                        <li><a class="sOutbox" title="" href="#">outbox</a></li>
-                        <li><a class="sTrash" title="" href="#">trash</a></li>
-                    </ul>
-                </li>
-                <li class="btn btn-inverse"><a title="" href="../login.jsp"><i class="icon icon-share-alt"></i> <span class="text">退出登录</span></a></li>
-            </ul>
-        </div>
+			<ul class="nav btn-group">
+				<li class="btn btn-inverse"><a title="" href="adminAction_change"><i class="icon icon-user"></i> <span class="text">密码修改</span></a></li>
+				<li class="btn btn-inverse dropdown" id="menu-messages"><a href="#" data-toggle="dropdown" data-target="#menu-messages" class="dropdown-toggle"><i class="icon icon-envelope"></i> <span class="text">邮箱</span><b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a class="sAdd" title="" href="#">发送信息</a></li>
+						<li><a class="sInbox" title="" href="#">收件箱</a></li>
+						<li><a class="sOutbox" title="" href="#">已发出信息</a></li>
+					</ul>
+				</li>
+				<li class="btn btn-inverse"><a title="" href="userAction_logout"><i class="icon icon-share-alt"></i> <span class="text">退出登录</span></a></li>
+			</ul>
+		</div>
             
 		<div id="sidebar">
-			<a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
+			<a href="adminAction_home" class="visible-phone"><i class="icon icon-home"></i>我的桌面</a>
 			<ul>
-				<li class="active"><a href="index.jsp"><i class="icon icon-home"></i> <span>Dashboard</span></a></li>
+				<li class="active"><a href="adminAction_home"><i class="icon icon-home"></i> <span>我的桌面</span></a></li>
 				<li class="submenu">
-					<a href="#"><i class="icon icon-th-list"></i> <span>Form elements</span> <span class="label">3</span></a>
+					<a href="#"><i class="icon icon-th-list"></i> <span>基本配置管理</span> <span class="label">2</span></a>
 					<ul>
-						<li><a href="form-common.html">Common elements</a></li>
-						<li><a href="form-validation.html">Validation</a></li>
-						<li><a href="form-wizard.html">Wizard</a></li>
+						<li><a href="adminAction_studentPer">学生权限控制</a></li>
+						<li><a href="adminAction_teacherPer">教师权限控制</a></li>
 					</ul>
 				</li>
-				<li><a href="tables.html"><i class="icon icon-th"></i> <span>Tables</span></a></li>
-				<li><a href="grid.html"><i class="icon icon-th-list"></i> <span>Grid Layout</span></a></li>
 				<li class="submenu">
-					<a href="#"><i class="icon icon-file"></i> <span>Sample pages</span> <span class="label">4</span></a>
+					<a href="#"><i class="icon icon-file"></i> <span>用户管理</span> <span class="label">4</span></a>
 					<ul>
-						<li><a href="invoice.html">Invoice</a></li>
-						<li><a href="chat.html">Support chat</a></li>
-						<li><a href="calendar.html">Calendar</a></li>
-						<li><a href="gallery.html">Gallery</a></li>
+						<li><a href="adminAction_stuCreate">创建学生账户</a></li>
+						<li><a href="adminAction_stuUpdate">修改学生账户</a></li>
+						<li><a href="adminAction_teaCreate">创建老师账户</a></li>
+						<li><a href="adminAction_teaUpdate">修改老师账户</a></li>
 					</ul>
 				</li>
 				<li>
-					<a href="../teacher/charts.html"><i class="icon icon-signal"></i> <span>Charts &amp; graphs</span></a>
+					<a href="adminAction_check"><i class="icon icon-signal"></i> <span>论文审核</span></a>
 				</li>
-				<li>
-					<a href="widgets.html"><i class="icon icon-inbox"></i> <span>Widgets</span></a>
+				<li class="submenu">
+					<a href="#"><i class="icon icon-file"></i> <span>通知管理</span> <span class="label">2</span></a>
+					<ul>
+						<li><a href="adminAction_messageCreate">创建通知</a></li>
+						<li><a href="adminAction_msgList">删除通知</a></li>
+					</ul>
 				</li>
 			</ul>
 		
@@ -117,7 +117,7 @@
 				<div class="row-fluid">
 					<div class="span12">
 						<div class="alert alert-info">
-							Welcome in the <strong>Unicorn Admin Theme</strong>. Don't forget to check all the pages!
+							欢迎进入 <strong> 毕业论文管理系统 </strong>. 请在规定时间内操作，以免造成不必要的麻烦!
 							<a href="#" data-dismiss="alert" class="close">×</a>
 						</div>
 						<div class="widget-box">

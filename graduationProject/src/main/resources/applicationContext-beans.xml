@@ -19,15 +19,53 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
        <property name="userDao" ref="userDao"/>
    </bean>
 
+    <bean id="topicAction" class="com.actions.TopicAction" scope="prototype">
+        <property name="topicService" ref="topicService"/>
+    </bean>
+    <bean id="topicDao" class="com.dao.impl.TopicDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean id="topicService" class="com.service.serviceImpl.TopicServiceImpl">
+        <property name="topicDao" ref="topicDao"/>
+    </bean>
+
+    <bean id="messageAction" class="com.actions.MessageAction" scope="prototype">
+        <property name="messageService" ref="messageService"/>
+    </bean>
+    <bean id="messageDao" class="com.dao.impl.MessageDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean id="messageService" class="com.service.serviceImpl.MessageServiceImpl">
+        <property name="messageDao" ref="messageDao"/>
+    </bean>
+
     <bean id="studentAction" class="com.actions.StudentAction">
         <property name="studentService" ref="studentService"/>
     </bean>
 
     <bean id="studentService" class="com.service.serviceImpl.StudentServiceImpl">
         <property name="studentDao" ref="studentDao"/>
+        <property name="userDao" ref="userDao"/>
     </bean>
     <bean id="studentDao" class="com.dao.impl.StudentDaoImpl">
         <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="teacherAction" class="com.actions.TeacherAction">
+        <property name="teacherService" ref="teacherService"/>
+    </bean>
+
+    <bean id="teacherService" class="com.service.serviceImpl.TeacherServiceImpl">
+        <property name="teacherDao" ref="teacherDao"/>
+    </bean>
+    <bean id="teacherDao" class="com.dao.impl.TeacherDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean id="adminAction" class="com.actions.AdminAction">
+        <property name="studentService" ref="studentService"/>
+        <property name="teacherService" ref="teacherService"/>
+        <property name="topicService" ref="topicService"/>
+        <property name="userService" ref="userService"/>
     </bean>
 
 </beans>

@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping 
+	package="com.beans">
+
+	<class name="TopicCheckProcess" table="t_topic_check_process">
+		<id name="id">
+			<generator class="native"/>
+		</id>
+
+		<property name="topicCommitBegin" column="commit_begin" type="date"/>
+
+		<property name="topicCommitEnd" column="commit_end" type="date"/>
+
+		<property name="choiceBegin" column="choice_begin" type="date"/>
+
+		<property name="choiceEnd" column="choice_end" type="date"/>
+
+		<property name="topicBegin" column="topic_begin" type="date"/>
+
+		<property name="topicEnd" column="topic_end" type="date"/>
+
+		<property name="topicMidBegin" column="topic_mid_begin" type="date"/>
+
+		<property name="topicMidEnd" column="topic_mid_end" type="date"/>
+
+		<property name="topicFinalBegin" column="topic_final_begin" type="date"/>
+
+		<property name="topicFinalEnd" column="topic_final_end" type="date"/>
+	</class>
+	
+</hibernate-mapping>
