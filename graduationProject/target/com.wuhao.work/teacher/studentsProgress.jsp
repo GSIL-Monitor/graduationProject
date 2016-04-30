@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ page contentType="text/html;charset=utf-8" %>
+<%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String path = request.getContextPath();
 %>
@@ -75,11 +76,11 @@
 
 		<div id="content">
 			<div id="content-header">
-				<h1>学生选题</h1>
+				<h1>学生进度查看</h1>
 			</div>
 			<div id="breadcrumb">
 				<a href="studentAction_home" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
-				<a href="#" class="current">学生选题</a>
+				<a href="#" class="current">学生进度查看</a>
 			</div>
 			<div class="container-fluid">
 				<div class="row-fluid">
@@ -91,39 +92,25 @@
 								<table class="table table-bordered data-table">
 									<thead>
 									<tr>
+										<th>学生姓名</th>
+										<th>学号</th>
 										<th>论文题目</th>
-										<th>指导老师</th>
-										<th>题目类别</th>
-										<th>题目所属专业</th>
-										<th></th>
+										<th>开题报告进度</th>
+										<th>中期计划进度</th>
+										<th>终期报告进度</th>
 									</tr>
 									</thead>
 									<tbody>
-									<tr class="gradeX">
-										<td><a href="topicAction_detail" target="_blank">Trident</a></td>
-										<td>Internet Explorer 4.0</td>
-										<td>Win 95+</td>
-										<td class="center">4</td>
-										<td><a href="topicAction_check?topic_id=">［选题］</a></td>
-									</tr>
-									<tr class="gradeC">
-										<td>Trident</td>
-										<td>Internet Explorer 5.0</td>
-										<td>Win 95+</td>
-										<td class="center">5</td>
-									</tr>
-									<tr class="gradeA">
-										<td>Trident</td>
-										<td>Internet Explorer 5.5</td>
-										<td>Win 95+</td>
-										<td class="center">5.5</td>
-									</tr>
-									<tr class="gradeA">
-										<td>Trident</td>
-										<td>Internet Explorer 6</td>
-									 	<td>Win 98+</td>
-									 	<td class="center">6</td>
-									</tr>
+									<c:forEach var="process" items="${processList}">
+										<tr class="gradeX">
+											<td>${process.studentName}</td>
+											<td>${process.studentNo}</td>
+											<td><a href="topicAction_detail?topic_id=${process.topic_id}">${process.thesisName}</a></td>
+											<td>${process.topicBegin}</td>
+											<td>${process.topicMid}</td>
+											<td>${process.topicEnd}</td>
+										</tr>
+									</c:forEach>
 									</tbody>
 									</table>
 							</div>

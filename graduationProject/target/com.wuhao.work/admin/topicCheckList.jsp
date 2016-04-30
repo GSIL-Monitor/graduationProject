@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ page contentType="text/html;charset=utf-8" %>
+<%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String path = request.getContextPath();
 %>
@@ -101,30 +102,14 @@
 									</tr>
 									</thead>
 									<tbody>
-									<tr class="gradeX">
-										<td><a href="topicAction_detail?topic_id" target="_blank">Trident</a></td>
-										<td>Internet Explorer 4.0</td>
-										<td><a href=" adminAction_topicCheck?is_pass=1">［通过］</a></td>
-										<td><a href=" adminAction_topicCheck?is_pass=0">［不通过］</a></td>
-									</tr>
-									<tr class="gradeC">
-										<td>Trident</td>
-										<td>Internet Explorer 5.0</td>
-										<td>Win 95+</td>
-										<td class="center">5</td>
-									</tr>
-									<tr class="gradeA">
-										<td>Trident</td>
-										<td>Internet Explorer 5.5</td>
-										<td>Win 95+</td>
-										<td class="center">5.5</td>
-									</tr>
-									<tr class="gradeA">
-										<td>Trident</td>
-										<td>Internet Explorer 6</td>
-									 	<td>Win 98+</td>
-									 	<td class="center">6</td>
-									</tr>
+									<c:forEach var="topic" items="${topicList}">
+										<tr class="gradeX">
+											<td><a href="topicAction_detail?topic_id=${topic.topic_id}" target="_blank">${topic.name}</a></td>
+											<td>${topic.tutorName}</td>
+											<td><a href=" adminAction_topicCheck?is_pass=1&topic_id=${topic.topic_id}">［通过］</a></td>
+											<td><a href=" adminAction_topicCheck?is_pass=0&topic_id=${topic.topic_id}">［不通过］</a></td>
+										</tr>
+									</c:forEach>
 									</tbody>
 									</table>
 							</div>

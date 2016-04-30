@@ -116,7 +116,7 @@
 									<div class="control-group">
 										<label class="control-label">学院</label>
 										<div class="controls">
-											<select name="teacher.collegeName">
+											<select name="teacher.college_name">
 												<option value="软件学院">软件学院</option>
 												<option value="计算机科学与技术学院">计算机科学与技术学院</option>
 												<option value="新闻传播学院">新闻传播学院</option>
@@ -126,7 +126,7 @@
 									<div class="control-group">
 										<label class="control-label">专业</label>
 										<div class="controls">
-											<select name="teacher.majorName">
+											<select name="teacher.major_name">
 												<option value="软件工程">软件工程</option>
 												<option value="互联网工程">互联网工程</option>
 												<option value="计算机科学与技术">计算机科学与技术</option>

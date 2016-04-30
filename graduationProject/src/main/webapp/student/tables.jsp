@@ -81,36 +81,20 @@
 									<thead>
 									<tr>
 										<th>论文题目</th>
-										<th>指导老师</th>
 										<th>题目类型</th>
+										<th>指导老师</th>
 										<th></th>
 									</tr>
 									</thead>
 									<tbody>
-									<tr class="gradeX">
-										<td><a href="topicAction_detail?topic_id" target="_blank">Trident</a></td>
-										<td>Internet Explorer 4.0</td>
-										<td>Win 95+</td>
-										<td><a href="topicAction_select">[选题]</a></td>
-									</tr>
-									<tr class="gradeC">
-										<td>Trident</td>
-										<td>Internet Explorer 5.0</td>
-										<td>Win 95+</td>
-										<td class="center">5</td>
-									</tr>
-									<tr class="gradeA">
-										<td>Trident</td>
-										<td>Internet Explorer 5.5</td>
-										<td>Win 95+</td>
-										<td class="center">5.5</td>
-									</tr>
-									<tr class="gradeA">
-										<td>Trident</td>
-										<td>Internet Explorer 6</td>
-									 	<td>Win 98+</td>
-									 	<td class="center">6</td>
-									</tr>
+									<c:forEach var="topic" items="${topicList}">
+										<tr class="gradeX">
+											<td><a href="topicAction_detail?topic_id=${topic.topic_id}" target="_blank">${topic.name}</a></td>
+											<td>${topic.type}</td>
+											<td>${topic.tutorName}</td>
+											<td><a href="topicAction_select?topic_id=${topic.topic_id}">［选题］</a></td>
+										</tr>
+									</c:forEach>
 									</tbody>
 									</table>
 							</div>

@@ -1,5 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ page contentType="text/html;charset=utf-8" %>
+<%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%
 	String path = request.getContextPath();
 %>
@@ -91,37 +93,21 @@
 								<table class="table table-bordered data-table">
 									<thead>
 									<tr>
-										<th>学号</th>
-										<th>姓名</th>
 										<th>论文题目</th>
+										<th>指导老师</th>
+										<th>创建时间</th>
 										<th></th>
 									</tr>
 									</thead>
 									<tbody>
-									<tr class="gradeX">
-										<td>Trident</td>
-										<td>Internet Explorer 4.0</td>
-										<td>Win 95+</td>
-										<td><a href="teacherAction_add?topic_id=">［修改］</a></td>
-									</tr>
-									<tr class="gradeC">
-										<td>Trident</td>
-										<td>Internet Explorer 5.0</td>
-										<td>Win 95+</td>
-										<td class="center">5</td>
-									</tr>
-									<tr class="gradeA">
-										<td>Trident</td>
-										<td>Internet Explorer 5.5</td>
-										<td>Win 95+</td>
-										<td class="center">5.5</td>
-									</tr>
-									<tr class="gradeA">
-										<td>Trident</td>
-										<td>Internet Explorer 6</td>
-									 	<td>Win 98+</td>
-									 	<td class="center">6</td>
-									</tr>
+									<c:forEach var="topic" items="${topicList}">
+										<tr class="gradeX">
+											<td>${topic.name}</td>
+											<td>${topic.tutorName}</td>
+											<td><fmt:formatDate value="${topic.created_at}" pattern="yyyy-MM-dd"/></td>
+											<td><a href="teacherAction_updateTopicDetail?topic_id=${topic.topic_id}">［修改］</a></td>
+										</tr>
+									</c:forEach>
 									</tbody>
 									</table>
 							</div>

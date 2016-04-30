@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ page contentType="text/html;charset=utf-8" %>
+<%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String path = request.getContextPath();
 %>
@@ -82,7 +83,7 @@
 		
 		<div id="content">
 			<div id="content-header">
-				<h1>填写开题计划</h1>
+				<h1>开题计划审核</h1>
 			</div>
 			<div id="breadcrumb">
 				<a href="<%=path%>/studentAction_home" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
@@ -91,11 +92,10 @@
 			</div>
 			<div class="container-fluid">
 				<script id="container" name="content" type="text/plain">
-					这里写你的初始化内容
+					${report.beginReport}
 					</script>
 				<form action="topicAction_beginSave" method="post" class="form-horizontal" name="basic_validate" id="basic_validate" novalidate="novalidate">
-					<!-- 加载编辑器的容器 -->
-					<input type="hidden" name="topic_id" value="${topic_id}">
+					<input type="hidden" name="topic_id" value="${report.topic_id}">
 					<div class="control-group">
 						<label class="control-label">老师意见:</label>
 						<div class="controls">
@@ -113,8 +113,8 @@
 					<div class="control-group">
 						<label class="control-label">是否通过:</label>
 						<div class="controls">
-							<label><input type="radio" name="topic.physical" value="0" checked="checked"/> 否</label>
-							<label><input type="radio" name="topic.physical" value="1"/> 是</label>
+							<label><input type="radio" name="is_pass" value="0" checked="checked"/> 否</label>
+							<label><input type="radio" name="is_pass" value="1"/> 是</label>
 						</div>
 					</div>
 

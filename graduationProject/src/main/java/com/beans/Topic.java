@@ -10,6 +10,7 @@ import java.util.Date;
 public class Topic {
     public long id;
     public String topic_id;
+    public int is_selected;
     //导师id
     public String teacherId;
     //论文题目
@@ -21,11 +22,11 @@ public class Topic {
     //添加人
     public String created_by;
     //添加时间
-    public int created_at;
+    public java.util.Date created_at;
     //修改人
     public String updated_by;
     //修改时间
-    public int updated_at;
+    public java.util.Date updated_at;
     //题目类别
     public String type;
     //题目性质
@@ -83,12 +84,20 @@ public class Topic {
         this.created_by = created_by;
     }
 
-    public int getCreated_at() {
+    public java.util.Date getCreated_at() {
         return created_at;
     }
 
-    public void setCreated_at(int created_at) {
+    public void setCreated_at(java.util.Date created_at) {
         this.created_at = created_at;
+    }
+
+    public java.util.Date getUpdated_at() {
+        return updated_at;
+    }
+
+    public void setUpdated_at(java.util.Date updated_at) {
+        this.updated_at = updated_at;
     }
 
     public String getUpdated_by() {
@@ -99,13 +108,6 @@ public class Topic {
         this.updated_by = updated_by;
     }
 
-    public int getUpdated_at() {
-        return updated_at;
-    }
-
-    public void setUpdated_at(int updated_at) {
-        this.updated_at = updated_at;
-    }
 
     public String getType() {
         return type;
@@ -187,12 +189,20 @@ public class Topic {
         this.topic_id = topic_id;
     }
 
+    public int getIs_selected() {
+        return is_selected;
+    }
+
+    public void setIs_selected(int is_selected) {
+        this.is_selected = is_selected;
+    }
+
     public Topic() {
-        Date now=new Date();
+        java.util.Date now=new java.util.Date();
         this.status=1;
         this.topic_id= RoleUtils.genId();
-        this.created_at=(int)(now.getTime()/1000);
-        this.updated_at=(int)(now.getTime()/1000);
+        this.created_at=now;
+        this.updated_at=now;
     }
 
     @Override
@@ -200,6 +210,7 @@ public class Topic {
         return "Topic{" +
                 "id=" + id +
                 ", topic_id='" + topic_id + '\'' +
+                ", is_selected=" + is_selected +
                 ", teacherId='" + teacherId + '\'' +
                 ", name='" + name + '\'' +
                 ", tutorName='" + tutorName + '\'' +

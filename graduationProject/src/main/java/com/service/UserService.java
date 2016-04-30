@@ -1,5 +1,6 @@
 package com.service;
 
+import com.beans.SumBean;
 import com.beans.User;
 
 import java.util.List;
@@ -15,5 +16,9 @@ public interface UserService {
 
     public void saveUser(User user);
 
+    public User getUser(String uid);
+
     public List queryAllUsers();
+
+    public SumBean count();
 }

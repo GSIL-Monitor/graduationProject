@@ -32,12 +32,41 @@ public class TeacherDaoImpl implements TeacherDao {
         transaction = session.beginTransaction();
         session.save(teacher);
         transaction.commit();
+        session.close();
+    }
+    public Teacher getTeacherByTeacherId(String teacher_id) throws Exception {
+        Teacher teacher=null;
+        Session session;//hibernate会话
+        session=sessionFactory.openSession();
+        String selectHql="select teacher from Teacher as teacher where teacher.teacher_id=?";
+        Query query=session.createQuery(selectHql);
+        query.setString(0, teacher_id);
+        List<Teacher> list=query.list();
+        if (!list.isEmpty()){
+            teacher=list.get(0);
+        }
+        session.close();
+        return teacher;
+    }
+    public Teacher getTeacherByUId(String uid) throws Exception {
+        Teacher teacher=null;
+        Session session;//hibernate会话
+        session=sessionFactory.openSession();
+        String selectHql="select teacher from Teacher as teacher where teacher.uid=?";
+        Query query=session.createQuery(selectHql);
+        query.setString(0,uid);
+        List<Teacher> list=query.list();
+        if (!list.isEmpty()){
+            teacher=list.get(0);
+        }
+        session.close();
+        return teacher;
     }
 
     public List queryAllTeacher() throws Exception {
         Session session;//hibernate会话
         session=sessionFactory.openSession();
-        List list=session.createQuery("select teacher from Teacher as teacher").list();
+        List list=session.createQuery("select teacher from Teacher as teacher where teacher.status=1").list();
         session.close();
         return list;
     }
@@ -50,13 +79,31 @@ public class TeacherDaoImpl implements TeacherDao {
         String selectHql="select teacher from Teacher as teacher where teacher.uid=?";
         Query query=session.createQuery(selectHql);
         query.setString(0,teacher.getUid());
-        List<Student> list=query.list();
+        List<Teacher> list=query.list();
         if (!list.isEmpty()){
-            Student studentSql=list.get(0);
-            studentSql.setTelNo(teacher.getTel_no());
-            studentSql.setEmail(teacher.getEmail());
-            studentSql.setQqNo(teacher.getQq_no());
-            session.update(studentSql);
+            Teacher teacherSql=list.get(0);
+            teacherSql.setTel_no(teacher.getTel_no());
+            teacherSql.setEmail(teacher.getEmail());
+            teacherSql.setQq_no(teacher.getQq_no());
+            teacherSql.setStatus(teacher.getStatus());
+            session.update(teacherSql);
+        }
+        transaction.commit();
+        session.close();
+    }
+    public void lockTeacher(Teacher teacher) throws Exception{
+        Session session;//hibernate会话
+        Transaction transaction; //hiberante事务
+        session=sessionFactory.openSession();
+        transaction=session.beginTransaction();
+        String selectHql="select teacher from Teacher as teacher where teacher.uid=?";
+        Query query=session.createQuery(selectHql);
+        query.setString(0,teacher.getUid());
+        List<Teacher> list=query.list();
+        if (!list.isEmpty()){
+            Teacher teacherSql=list.get(0);
+            teacherSql.setStatus(teacher.getStatus());
+            session.update(teacherSql);
         }
         transaction.commit();
         session.close();

@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ page contentType="text/html;charset=utf-8" %>
+<%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String path = request.getContextPath();
 %>
@@ -101,30 +102,14 @@
 									</tr>
 									</thead>
 									<tbody>
-									<tr class="gradeX">
-										<td>Trident</td>
-										<td>Internet Explorer 4.0</td>
-										<td><a href=" adminAction_stuDelete?student_id=">［注销］</a></td>
-										<td><a href=" adminAction_stuCreate?student_id=">［修改］</a></td>
-									</tr>
-									<tr class="gradeC">
-										<td>Trident</td>
-										<td>Internet Explorer 5.0</td>
-										<td>Win 95+</td>
-										<td class="center">5</td>
-									</tr>
-									<tr class="gradeA">
-										<td>Trident</td>
-										<td>Internet Explorer 5.5</td>
-										<td>Win 95+</td>
-										<td class="center">5.5</td>
-									</tr>
-									<tr class="gradeA">
-										<td>Trident</td>
-										<td>Internet Explorer 6</td>
-									 	<td>Win 98+</td>
-									 	<td class="center">6</td>
-									</tr>
+									<c:forEach var="student" items="${studentList}">
+										<tr class="gradeX">
+											<td>${student.stuNo}</td>
+											<td>${student.name}</td>
+											<td><a href=" adminAction_stuDelete?student_id=${student.id}">［注销］</a></td>
+											<td><a href=" adminAction_stuModify?student_id=${student.id}">［修改］</a></td>
+										</tr>
+									</c:forEach>
 									</tbody>
 									</table>
 							</div>

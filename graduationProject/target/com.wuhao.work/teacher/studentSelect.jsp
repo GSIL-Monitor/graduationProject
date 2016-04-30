@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ page contentType="text/html;charset=utf-8" %>
+<%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String path = request.getContextPath();
 %>
@@ -98,30 +99,14 @@
 									</tr>
 									</thead>
 									<tbody>
-									<tr class="gradeX">
-										<td>Trident</td>
-										<td>Internet Explorer 4.0</td>
-										<td>软件工程</td>
-										<td><a href="teacherAction_studentSelect?student_id=">［选题］</a></td>
-									</tr>
-									<tr class="gradeC">
-										<td>Trident</td>
-										<td>Internet Explorer 5.0</td>
-										<td>Win 95+</td>
-										<td class="center">5</td>
-									</tr>
-									<tr class="gradeA">
-										<td>Trident</td>
-										<td>Internet Explorer 5.5</td>
-										<td>Win 95+</td>
-										<td class="center">5.5</td>
-									</tr>
-									<tr class="gradeA">
-										<td>Trident</td>
-										<td>Internet Explorer 6</td>
-									 	<td>Win 98+</td>
-									 	<td class="center">6</td>
-									</tr>
+									<c:forEach var="stu" items="${studentList}">
+										<tr class="gradeX">
+											<td>${stu.stuNo}</td>
+											<td>${stu.name}</td>
+											<td>${stu.majorName}</td>
+											<td><a href="teacherAction_studentSelect?student_id=${stu.id}">［选题］</a></td>
+										</tr>
+									</c:forEach>
 									</tbody>
 									</table>
 							</div>

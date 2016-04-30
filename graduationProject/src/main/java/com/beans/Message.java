@@ -1,5 +1,7 @@
 package com.beans;
 
+import java.util.Date;
+
 /**
  * Created by wuhao on 16/4/19.
  */
@@ -8,7 +10,7 @@ public class Message {
     public String title;
     public int status;
     public String content;
-    public int createAt;
+    public Date createAt;
     public int accessTimes;
     public int isHaveDoc;
     public String docName;
@@ -46,11 +48,11 @@ public class Message {
         this.content = content;
     }
 
-    public int getCreateAt() {
+    public Date getCreateAt() {
         return createAt;
     }
 
-    public void setCreateAt(int createAt) {
+    public void setCreateAt(Date createAt) {
         this.createAt = createAt;
     }
 
@@ -87,6 +89,7 @@ public class Message {
     }
 
     public Message() {
+        this.createAt=new Date();
         this.status = 1;
     }
 

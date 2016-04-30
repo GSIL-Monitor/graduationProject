@@ -13,5 +13,7 @@ public interface MessageDao {
 	
 	public List queryAllMessages() throws Exception;
 
+	public Message getMessageById(long id) throws Exception;
+
 	
 }

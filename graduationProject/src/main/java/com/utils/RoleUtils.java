@@ -1,5 +1,14 @@
 package com.utils;
 
+import com.beans.Topic;
+import com.beans.TopicStatus;
+import net.sf.json.JSON;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
+import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -19,8 +28,32 @@ public class RoleUtils {
     }
 
     public static void main(String args[]){
-        System.out.print("呵呵哒");
+        Topic topic=new Topic();
+        String test=JSONObject.fromObject(topic).toString();
+        System.out.println(test);
 
+    }
+    public static double countScore(TopicStatus topicStatus){
+        if(topicStatus.getTopicBegin()!=0 && topicStatus.getTopicMid()!=0 &&topicStatus.getTopicFinal()!=0){
+            return topicStatus.getBeginScore()*0.2+topicStatus.getMidScore()*0.3+topicStatus.getFinalScore()*0.5;
+        }else {
+            return 0;
+        }
+    }
+    public static String transcoding(String str) {
+        try {
+            return new String(str.getBytes("utf-8"), "iso-8859-1");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return str;
+    }
+    public static String covent(int status){
+        Map<Integer,String> map=new HashMap();
+        map.put(0,"未提交");
+        map.put(1,"提交未审核");
+        map.put(2,"审核已通过");
+        return map.get(status);
     }
 
 }

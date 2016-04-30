@@ -108,8 +108,10 @@
 									<div class="control-group">
 										<label class="control-label">题目性质</label>
 										<div class="controls">
-											<label><input type="radio" name="topic.physical" value="科学研究类" checked="checked"/> 科学研究类</label>
-											<label><input type="radio" name="topic.physical" value="企事业需求类"/> 企事业需求类</label>
+											<select name="topic.physical">
+												<option value="科学研究类">科学研究类</option>
+												<option value="企事业需求类">企事业需求类</option>
+											</select>
 										</div>
 									</div>
 									<div class="control-group">

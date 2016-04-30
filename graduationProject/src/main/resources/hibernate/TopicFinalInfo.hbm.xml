@@ -10,8 +10,8 @@
 			<generator class="native"/>
 		</id>
 		<property name="topic_id"  column="topic_id" type="java.lang.String" length="40"/>
-		<property name="pdfName" type="java.lang.String" column="pdf_name" length="20"/>
-		<property name="wordName" type="java.lang.String" column="work_name" length="20"/>
+		<property name="pdfName" type="java.lang.String" column="pdf_name" length="150"/>
+		<property name="wordName" type="java.lang.String" column="word_name" length="150"/>
 		<property name="isSavePdf" type="int" column="is_save_pdf"/>
 		<property name="isSaveWord" type="int" column="is_save_word"/>
 	</class>

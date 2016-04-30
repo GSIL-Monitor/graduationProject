@@ -12,9 +12,9 @@
         <action name="userAction_*" class="userAction" method="{1}">
             <result>/login.jsp</result>
             <result name="login">/login.jsp</result>
-            <result name="STUDENT">/student/index.jsp</result>
-            <result name="TEACHER">/teacher/index.jsp</result>
-            <result name="ADMIN">/admin/index.jsp</result>
+            <result name="STUDENT" type="chain">studentAction_home</result>
+            <result name="TEACHER" type="chain">teacherAction_home</result>
+            <result name="ADMIN" type="chain">adminAction_home</result>
             <result name="STUDENT_UPDATE">/student/passchange.jsp</result>
             <result name="TEACHER_UPDATE">/teacher/passchange.jsp</result>
             <result name="ADMIN_UPDATE">/admin/passchange.jsp</result>
@@ -39,7 +39,6 @@
     </package>
     <package name="teacher" namespace="/"  extends="struts-default">
         <action name="teacherAction_*" class="teacherAction" method="{1}">
-            <result>/teacher/index.jsp</result>
             <result name="login">/teacher/index.jsp</result>
             <result name="info">/teacher/info.jsp</result>
             <result name="messageDetail">/teacher/messageDetail.jsp</result>
@@ -57,6 +56,10 @@
             <result name="studentTopic">/teacher/studentSelect.jsp</result>
             <result name="studentSelect">/teacher/studentSelectDetail.jsp</result>
             <result name="update">/teacher/topicUpdateList.jsp</result>
+            <result name="updateDetail">/teacher/topicUpdate.jsp</result>
+            <result type="stream">
+                <param name="inputName">inputStream</param>
+            </result>
         </action>
     </package>
     <package name="topic" namespace="/"  extends="struts-default">
@@ -67,14 +70,23 @@
             <result name="BEGIN_READ">/teacher/topicBeginRead.jsp</result>
             <result name="MID_CHECK">/teacher/topicMid.jsp</result>
             <result name="FINAL_CHECK">/teacher/topicFinal.jsp</result>
-            <result name="MID_READ">/teacher/topicMIdRead.jsp</result>
+            <result name="MID_READ">/teacher/topicMidRead.jsp</result>
             <result name="home">/teacher/index.jsp</result>
+            <result name="STUDENT_SELECT" type="chain">studentAction_home</result>
+            <result name="TEACHER_SELECT" type="chain">teacherAction_home</result>
+            <result name="teacherHome" type="chain">teacherAction_home</result>
         </action>
     </package>
     <package name="message" namespace="/"  extends="struts-default">
         <action name="messageAction_*" class="messageAction" method="{1}">
             <result name="login">/login.jsp</result>
             <result name="detail">/messageDetail.jsp</result>
+            <result name="download" type="stream">
+                <param name="inputName">fileInputStream</param>
+                <param name="contentDisposition">attachment;filename="${fileName}"</param>
+                <param name="contentType">application/octet-stream</param>
+                <param name="bufferSize">1024</param>
+            </result>
         </action>
     </package>
     <package name="admin" namespace="/"  extends="struts-default">
@@ -83,6 +95,8 @@
             <result name="TEACHER_PER">/admin/teaPermission.jsp</result>
             <result name="STU_CREATE">/admin/studentInput.jsp</result>
             <result name="STU_UPDATE">/admin/stuChangeList.jsp</result>
+            <result name="TEA_MODIFY">/admin/teacherChange.jsp</result>
+            <result name="STU_MODIFY">/admin/studentChange.jsp</result>
             <result name="TEA_CREATE">/admin/teacherInput.jsp</result>
             <result name="TEA_UPDATE">/admin/teaChangeList.jsp</result>
             <result name="login">/login.jsp</result>
@@ -96,6 +110,9 @@
             <result name="topicCheck" type="chain">adminAction_check</result>
             <result name="STU_DELETE" type="chain">adminAction_stuUpdate</result>
             <result name="TEA_DELETE" type="chain">adminAction_teaUpdate</result>
+            <result type="stream">
+                <param name="inputName">inputStream</param>
+            </result>
         </action>
     </package>
     <!-- Add packages here -->

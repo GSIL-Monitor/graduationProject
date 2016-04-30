@@ -92,7 +92,7 @@
 						</div>
 						<div class="widget-content nopadding">
 							<form action="topicAction_finalSave" method="get" class="form-horizontal" >
-								<input type="hidden" name="topic_id" value="${topic_id}">
+								<input type="hidden" name="topic_id" value="${report.topic_id}">
 								<div class="control-group">
 									<label class="control-label">word格式论文:</label>
 									<div class="controls">
@@ -121,8 +121,8 @@
 								<div class="control-group">
 									<label class="control-label">是否通过:</label>
 									<div class="controls">
-										<label><input type="radio" name="topic.physical" value="0" checked="checked"/> 否</label>
-										<label><input type="radio" name="topic.physical" value="1"/> 是</label>
+										<label><input type="radio" name="is_pass" value="0" checked="checked"/> 否</label>
+										<label><input type="radio" name="is_pass" value="1"/> 是</label>
 									</div>
 								</div>
 								<div class="form-actions">

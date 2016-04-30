@@ -1,8 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ page contentType="text/html;charset=utf-8" %>
-<%
-	String path = request.getContextPath();
-%>
+<%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <html lang="en">
 	<head>
 		<title>毕业论文管理系统</title>
@@ -48,51 +47,58 @@
 									<tbody>
 									<tr class="gradeX">
 										<td>论文题目:</td>
-										<td colspan="3">Internet Explorer 4.0</td>
+										<td colspan="3">${topic.name}</td>
 									</tr>
 									<tr class="gradeC">
 										<td>指导教师姓名:</td>
-										<td>郭龙江</td>
+										<td>${topic.tutorName}</td>
 										<td>添加人:</td>
-										<td>郭龙江</td>
+										<td>${topic.created_by}</td>
 									</tr>
 									<tr class="gradeA">
 										<td>题目对应专业:</td>
-										<td>计算机科学与技术(计算机应用)</td>
+										<td>${topic.majorName}</td>
 										<td>添加时间:</td>
-										<td>2015年11月20日</td>
+										<td><fmt:formatDate value="${topic.created_at}" pattern="yyyy-MM-dd"/></td>
 									</tr>
 									<tr class="gradeA">
 										<td>题目类别:</td>
-										<td>论文</td>
+										<td>${topic.type}</td>
 									 	<td>修改人:</td>
-									 	<td>B:科学研究类</td>
+									 	<td>${topic.updated_by}</td>
 									</tr>
 									<tr class="gradeX">
 										<td>题目性质:</td>
-										<td>B:科学研究类</td>
+										<td>${topic.physical}</td>
 										<td>修改时间:</td>
-										<td>2015年11月20日</td>
+										<td><fmt:formatDate value="${topic.updated_at}" pattern="yyyy-MM-dd"/></td>
 									</tr>
 									<tr class="gradeX">
 										<td>是否实验类:</td>
-										<td>否</td>
+										<td>${topic.isTrial}</td>
 										<td>是否导师在研项目:</td>
-										<td>否</td>
+										<td>${topic.isTutorWork}</td>
 									</tr>
 									<tr class="gradeX">
 										<td>是否应用类:</td>
-										<td>否</td>
+										<td>${topic.isAnswer}</td>
 										<td>题目申报状态:</td>
-										<td>题目通过审核，已可选</td>
+										<c:choose>
+											<c:when test="${topic.status==2}">
+												<td>题目通过审核，已可选</td>
+											</c:when>
+											<c:otherwise>
+												<td>题目待审核</td>
+											</c:otherwise>
+										</c:choose>
 									</tr>
 									<tr class="gradeX">
 										<td>题目说明:</td>
-										<td colspan="3">没有说明</td>
+										<td colspan="3">${topic.instruction}</td>
 									</tr>
 									<tr class="gradeX">
 										<td>备注:</td>
-										<td colspan="3">没有说明</td>
+										<td colspan="3">${topic.comment}</td>
 									</tr>
 									</tbody>
 									</table>

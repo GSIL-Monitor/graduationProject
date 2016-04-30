@@ -82,10 +82,10 @@
 			<div class="container-fluid">
 				<!-- 加载编辑器的容器 -->
 				<script id="container" name="content" type="text/plain">
-					这里写你的初始化内容
+					${report.midReport}
 				</script>
 				<div class="control-group">
-					<label class="control-label">老师意见: 通过</label>
+					<label class="control-label">老师意见: ${topicThirdSug.mid_sug}</label>
 				</div>
 				<div class="row-fluid">
 					<div id="footer" class="span12">

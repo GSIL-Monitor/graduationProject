@@ -1,5 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ page contentType="text/html;charset=utf-8" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String path = request.getContextPath();
 %>
@@ -77,29 +79,29 @@
 							<li>
 								<div class="left peity_bar_good"><br/><br/><label>学生选择题目</label></div>
 								<div class="right">
-									<label>起:2015-11-23</label>
-									<label>止:2015-12-3</label>
+									<label>起:<fmt:formatDate value="${topicProcess.choiceBegin}" pattern="yyyy-MM-dd"/></label>
+									<label>止:<fmt:formatDate value="${topicProcess.choiceEnd}" pattern="yyyy-MM-dd"/></label>
 								</div>
 							</li>
 							<li>
 								<div class="left peity_bar_good"><br/><br/><label>开题计划填写</label></div>
 								<div class="right">
-									<label>起:2015-11-23</label>
-									<label>止:2015-12-3</label>
+									<label>起:<fmt:formatDate value="${topicProcess.topicBegin}" pattern="yyyy-MM-dd"/></label>
+									<label>止:<fmt:formatDate value="${topicProcess.topicEnd}" pattern="yyyy-MM-dd"/></label>
 								</div>
 							</li>
 							<li>
 								<div class="left peity_bar_good"><br/><br/><label>中期检查填写</label></div>
 								<div class="right">
-									<label>起:2015-11-23</label>
-									<label>止:2015-12-3</label>
+									<label>起:<fmt:formatDate value="${topicProcess.topicMidBegin}" pattern="yyyy-MM-dd"/></label>
+									<label>止:<fmt:formatDate value="${topicProcess.topicMidEnd}" pattern="yyyy-MM-dd"/></label>
 								</div>
 							</li>
 							<li>
 								<div class="left peity_bar_good"><br/><br/><label>论文终稿提交</label></div>
 								<div class="right">
-									<label>起:2015-11-23</label>
-									<label>止:2015-12-3</label>
+									<label>起:<fmt:formatDate value="${topicProcess.topicFinalBegin}" pattern="yyyy-MM-dd"/></label>
+									<label>止:<fmt:formatDate value="${topicProcess.topicFinalEnd}" pattern="yyyy-MM-dd"/></label>
 								</div>
 							</li>
 						</ul>
@@ -126,12 +128,31 @@
 									<tbody>
 										<tr>
 											<td>我的毕业论文进度:</td>
-											<td>石生树</td>
-											<td>本科学生毕业论文管理系统的设计与实现(软件)</td>
-											<td>3</td>
-											<td>2</td>
-											<td>0</td>
-											<td>暂无</td>
+											<td>${topic.tutorName}</td>
+											<td>${topic.name}</td>
+											<c:if test="${topicStatus.topicBegin!=2}">
+												<td>暂无</td>
+											</c:if>
+											<c:if test="${topicStatus.topicBegin==2}">
+												<td>${topicStatus.beginScore}</td>
+											</c:if>
+											<c:if test="${topicStatus.topicMid!=2}">
+												<td>暂无</td>
+											</c:if>
+											<c:if test="${topicStatus.topicMid==2}">
+												<td>${topicStatus.midScore}</td>
+											</c:if><c:if test="${topicStatus.topicFinal!=2}">
+												<td>暂无</td>
+											</c:if>
+											<c:if test="${topicStatus.topicFinal==2}">
+												<td>${topicStatus.finalScore}</td>
+											</c:if>
+											<c:if test="${allScore==0}">
+												<td>暂无</td>
+											</c:if>
+											<c:if test="${allScore!=0}">
+												<td>${allScore}</td>
+											</c:if>
 										</tr>
 									</tbody>
 								</table>

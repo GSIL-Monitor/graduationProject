@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ page contentType="text/html;charset=utf-8" %>
+<%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String path = request.getContextPath();
 %>
@@ -18,6 +19,50 @@
 	<body>
 	<div id="header">
 		<h1><a href="./dashboard.html">我的桌面</a></h1>
+	</div>
+	<div id="user-nav" class="navbar navbar-inverse">
+		<ul class="nav btn-group">
+			<li class="btn btn-inverse"><a title="" href="teacherAction_info"><i class="icon icon-user"></i> <span class="text">个人信息</span></a></li>
+			<li class="btn btn-inverse"><a title="" href="teacherAction_change"><i class="icon icon-user"></i> <span class="text">密码修改</span></a></li>
+			<li class="btn btn-inverse dropdown" id="menu-messages"><a href="#" data-toggle="dropdown" data-target="#menu-messages" class="dropdown-toggle"><i class="icon icon-envelope"></i> <span class="text">邮箱</span><b class="caret"></b></a>
+				<ul class="dropdown-menu">
+					<li><a class="sAdd" title="" href="#">发送信息</a></li>
+					<li><a class="sInbox" title="" href="#">收件箱</a></li>
+					<li><a class="sOutbox" title="" href="#">已发出信息</a></li>
+				</ul>
+			</li>
+			<li class="btn btn-inverse"><a title="" href="userAction_logout"><i class="icon icon-share-alt"></i> <span class="text">退出登录</span></a></li>
+		</ul>
+	</div>
+
+	<div id="sidebar">
+		<a href="#" class="visible-phone"><i class="icon icon-home"></i> 我的桌面</a>
+		<ul>
+			<li class="active"><a href="teacherAction_home"><i class="icon icon-home"></i> <span>我的桌面</span></a></li>
+			<li class="submenu">
+				<a href="#"><i class="icon icon-th-list"></i> <span>论文管理</span> <span class="label">3</span></a>
+				<ul>
+					<li><a href="teacherAction_add">论文录入</a></li>
+					<li><a href="teacherAction_updateTopic">论文修改</a></li>
+					<li><a href="teacherAction_studentTopic">给学生选题</a></li>
+				</ul>
+			</li>
+			<li class="submenu">
+				<a href="#"><i class="icon icon-file"></i> <span>论文过程管理</span> <span class="label">6</span></a>
+				<ul>
+					<li><a href="teacherAction_process">学生进度查看</a></li>
+					<li><a href="teacherAction_begin">审核学生开题计划</a></li>
+					<li><a href="teacherAction_beginRead">查看学生开题计划</a></li>
+					<li><a href="teacherAction_mid">审核学生中期计划</a></li>
+					<li><a href="teacherAction_midRead">查看学生中期计划</a></li>
+					<li><a href="teacherAction_topFinal">审核学生终稿</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="teacherAction_message"><i class="icon icon-signal"></i> <span>查看通知与下载</span></a>
+			</li>
+		</ul>
+
 	</div>
 	<div id="style-switcher">
 		<i class="icon-arrow-left icon-white"></i>
@@ -53,31 +98,15 @@
 									</tr>
 									</thead>
 									<tbody>
-									<tr class="gradeX">
-										<td><a href="topicAction_detail" target="_blank">Trident</a></td>
-										<td>Internet Explorer 4.0</td>
-										<td>Win 95+</td>
-										<td class="center">4</td>
-										<td><a href="topicAction_select?topic_id=">［选题］</a></td>
-									</tr>
-									<tr class="gradeC">
-										<td>Trident</td>
-										<td>Internet Explorer 5.0</td>
-										<td>Win 95+</td>
-										<td class="center">5</td>
-									</tr>
-									<tr class="gradeA">
-										<td>Trident</td>
-										<td>Internet Explorer 5.5</td>
-										<td>Win 95+</td>
-										<td class="center">5.5</td>
-									</tr>
-									<tr class="gradeA">
-										<td>Trident</td>
-										<td>Internet Explorer 6</td>
-									 	<td>Win 98+</td>
-									 	<td class="center">6</td>
-									</tr>
+									<c:forEach var="topic" items="${topicList}">
+										<tr class="gradeX">
+											<td><a href="topicAction_detail?topic_id=${topic.topic_id}" target="_blank">${topic.name}</a></td>
+											<td>${topic.tutorName}</td>
+											<td>${topic.type}</td>
+											<td class="center">${topic.majorName}</td>
+											<td><a href="topicAction_select?topic_id=${topic.topic_id}">［选题］</a></td>
+										</tr>
+									</c:forEach>
 									</tbody>
 									</table>
 							</div>

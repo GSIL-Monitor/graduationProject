@@ -1,5 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ page contentType="text/html;charset=utf-8" %>
+<%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%
 	String path = request.getContextPath();
 %>
@@ -98,30 +100,14 @@
 									</tr>
 									</thead>
 									<tbody>
-									<tr class="gradeX">
-										<td><a href="messageAction_detail?message.id=">Trident</a></td>
-										<td>Internet Explorer 4.0</td>
-										<td>Win 95+</td>
-										<td class="center">4</td>
-									</tr>
-									<tr class="gradeC">
-										<td>Trident</td>
-										<td>Internet Explorer 5.0</td>
-										<td>Win 95+</td>
-										<td class="center">5</td>
-									</tr>
-									<tr class="gradeA">
-										<td>Trident</td>
-										<td>Internet Explorer 5.5</td>
-										<td>Win 95+</td>
-										<td class="center">5.5</td>
-									</tr>
-									<tr class="gradeA">
-										<td>Trident</td>
-										<td>Internet Explorer 6</td>
-									 	<td>Win 98+</td>
-									 	<td class="center">6</td>
-									</tr>
+									<c:forEach var="message" items="${messageList}">
+										<tr class="gradeX">
+											<td><a href="messageAction_detail?id=${message.id}">${message.title}</a></td>
+											<td>${message.type}</td>
+											<td>${message.accessTimes}</td>
+											<td class="center"><fmt:formatDate value="${message.createAt}" pattern="yyyy-MM-dd"/></td>
+										</tr>
+									</c:forEach>
 									</tbody>
 									</table>
 							</div>

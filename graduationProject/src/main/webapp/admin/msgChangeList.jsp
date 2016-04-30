@@ -1,5 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ page contentType="text/html;charset=utf-8" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%
 	String path = request.getContextPath();
 %>
@@ -101,30 +103,14 @@
 									</tr>
 									</thead>
 									<tbody>
-									<tr class="gradeX">
-										<td>Trident</td>
-										<td>Internet Explorer 4.0</td>
-										<td> 2016-04－22</td>
-										<td><a href=" adminAction_msgDelete?message_id=">［删除］</a></td>
-									</tr>
-									<tr class="gradeC">
-										<td>Trident</td>
-										<td>Internet Explorer 5.0</td>
-										<td>Win 95+</td>
-										<td class="center">5</td>
-									</tr>
-									<tr class="gradeA">
-										<td>Trident</td>
-										<td>Internet Explorer 5.5</td>
-										<td>Win 95+</td>
-										<td class="center">5.5</td>
-									</tr>
-									<tr class="gradeA">
-										<td>Trident</td>
-										<td>Internet Explorer 6</td>
-									 	<td>Win 98+</td>
-									 	<td class="center">6</td>
-									</tr>
+									<c:forEach var="message" items="${messageList}">
+										<tr class="gradeX">
+											<td><a href="messageAction_detail?id=${message.id}">${message.title}</a></td>
+											<td>${message.type}</td>
+											<td class="center"><fmt:formatDate value="${message.createAt}" pattern="yyyy-MM-dd"/></td>
+											<td><a href=" adminAction_msgDelete?message_id=${message.id}">［删除］</a></td>
+										</tr>
+									</c:forEach>
 									</tbody>
 									</table>
 							</div>

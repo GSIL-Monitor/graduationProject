@@ -93,7 +93,7 @@
 				<a href="#" class="current">创建系统消息</a>
 			</div>
 			<div class="container-fluid">
-				<form action="adminAction_msgCreate" method="post" class="form-horizontal" name="basic_validate" id="basic_validate" novalidate="novalidate">
+				<form action="adminAction_msgCreate" method="post" class="form-horizontal" name="basic_validate" id="basic_validate" novalidate="novalidate" enctype="multipart/form-data">
 					<!-- 加载编辑器的容器 -->
 					<div class="control-group">
 						<label class="control-label">标题</label>
@@ -108,15 +108,15 @@
 						<label class="control-label">类目</label>
 						<div class="controls">
 							<select name="message.type">
-								<option value="0">通知与公告</option>
-								<option value="1">其他</option>
+								<option value="通知与公告">通知与公告</option>
+								<option value="其他">其他</option>
 							</select>
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label">附件</label>
 						<div class="controls">
-							<input type="file" name="docFile" id="docFile"/>
+							<input type="file" name="upload" id="upload"/>
 						</div>
 					</div>
 					<div class="form-actions">

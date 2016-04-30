@@ -91,11 +91,12 @@
 			</div>
 			<div class="container-fluid">
 				<!-- 加载编辑器的容器 -->
+				<input type="hidden" name="topic_id" value="${report.topic_id}">
 				<script id="container" name="content" type="text/plain">
-					这里写你的初始化内容
+					${report.midReport}
 					</script>
 				<form action="topicAction_midSave" method="post" class="form-horizontal" name="basic_validate" id="basic_validate" novalidate="novalidate">
-					<input type="hidden" name="topic_id" value="${topic_id}">
+					<input type="hidden" name="topic_id" value="${report.topic_id}">
 					<div class="control-group">
 						<label class="control-label">老师意见:</label>
 						<div class="controls">
@@ -113,8 +114,8 @@
 					<div class="control-group">
 						<label class="control-label">是否通过:</label>
 						<div class="controls">
-							<label><input type="radio" name="topic.physical" value="0" checked="checked"/> 否</label>
-							<label><input type="radio" name="topic.physical" value="1"/> 是</label>
+							<label><input type="radio" name="is_pass" value="0" checked="checked"/> 否</label>
+							<label><input type="radio" name="is_pass" value="1"/> 是</label>
 						</div>
 					</div>
 

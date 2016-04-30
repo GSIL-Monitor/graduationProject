@@ -41,6 +41,7 @@ public class UserDaoImpl  implements UserDao {
 		if (!list.isEmpty()){
 			User userSql=list.get(0);
 			userSql.setPassword(user.getPassword());
+			userSql.setStatus(user.getStatus());
 			session.update(userSql);
 		}
 		transaction.commit();
@@ -50,7 +51,7 @@ public class UserDaoImpl  implements UserDao {
 	public List queryAllUsers() throws Exception{
 		Session session;//hibernate会话
 		session=sessionFactory.openSession();
-		List list=session.createQuery("select u from User as u").list();
+		List list=session.createQuery("select user from User as user where user.status=1" ).list();
 		session.close();
 		return list;
 	}
@@ -70,10 +71,24 @@ public class UserDaoImpl  implements UserDao {
 			return list.get(0);
 		}
 	}
+	public User getUser(String uid) throws Exception {
+		Session session;//hibernate会话
+		session=sessionFactory.openSession();
+		String selectHql="select u from User as u where u.user_id=? and u.status=1";
+		Query query=session.createQuery(selectHql);
+		query.setString(0,uid);
+		List<User> list=query.list();
+		session.close();
+		if (list.isEmpty()) {
+			return null;
+		}else {
+			return list.get(0);
+		}
+	}
 	public boolean UserIsExit(String username) throws Exception {
 		Session session;//hibernate会话
 		session=sessionFactory.openSession();
-		String selectHql="select u from User as u where u.username=?";
+		String selectHql="select u from User as u where u.username=? and u.status=1";
 		Query query=session.createQuery(selectHql);
 		query.setString(0,username);
 		List<User> list=query.list();
@@ -83,6 +98,15 @@ public class UserDaoImpl  implements UserDao {
 		}else {
 			return true;
 		}
+	}
+	public long countUser(String sqlWhere) throws Exception {
+		Session session;//hibernate会话
+		session=sessionFactory.openSession();
+		String selectHql="select count(*) from User as user where user.status=1 and "+sqlWhere;
+		Query query=session.createQuery(selectHql);
+		long sum=((Number)query.uniqueResult()).longValue();
+		session.close();
+		return sum;
 	}
 
 	

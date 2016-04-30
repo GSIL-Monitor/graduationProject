@@ -1,6 +1,8 @@
 package com.service.serviceImpl;
 
+import com.beans.SumBean;
 import com.beans.User;
+import com.dao.TopicDao;
 import com.dao.UserDao;
 import com.opensymphony.xwork2.ActionContext;
 import com.service.UserService;
@@ -16,6 +18,16 @@ import java.util.Map;
 public class UserServiceImpl implements UserService{
     private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
     private UserDao userDao;
+    private TopicDao topicDao;
+
+    public TopicDao getTopicDao() {
+        return topicDao;
+    }
+
+    public void setTopicDao(TopicDao topicDao) {
+        this.topicDao = topicDao;
+    }
+
     public UserDao getUserDao() {
         return userDao;
     }
@@ -58,6 +70,15 @@ public class UserServiceImpl implements UserService{
         }
 
     }
+    public User getUser(String uid){
+        User user=new User();
+        try {
+            user=userDao.getUser(uid);
+        }catch (Exception e){
+            logger.error(e.getMessage());
+        }
+        return user;
+    }
 
     public List queryAllUsers() {
         try {
@@ -66,5 +87,18 @@ public class UserServiceImpl implements UserService{
             logger.error(e.getMessage());
         }
         return null;
+    }
+
+    public SumBean count() {
+        SumBean sumBean=new SumBean();
+        try {
+            sumBean.setStudentCount(userDao.countUser("user.type=1"));
+            sumBean.setTeacherCount(userDao.countUser("user.type=2"));
+            sumBean.setTopicCount(topicDao.countTopic("1=1"));
+            sumBean.setTopicPendingCount(topicDao.countTopic("topic.status=1"));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return sumBean;
     }
 }

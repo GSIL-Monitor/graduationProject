@@ -14,7 +14,7 @@
 
 		<property name="content" type="text"/>
 
-		<property name="createAt" type="java.lang.Integer" />
+		<property name="createAt" type="date" />
 
 		<property name="accessTimes" type="integer" column="access_times" />
 
@@ -24,7 +24,7 @@
 
 		<property name="isHaveDoc" column="is_have_doc" type="int"/>
 
-		<property name="docName" column="doc_name" type="java.lang.String" length="30"/>
+		<property name="docName" column="doc_name" type="java.lang.String" length="150"/>
 	</class>
 	
 </hibernate-mapping>

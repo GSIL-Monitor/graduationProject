@@ -80,13 +80,14 @@
 				<a href="#" class="current">填写中期检查</a>
 			</div>
 			<div class="container-fluid">
-				<form action="topicAction_midSave" method="post" class="form-horizontal" name="basic_validate" id="basic_validate" novalidate="novalidate">
+				<form action="studentAction_midSave" method="post" class="form-horizontal" name="basic_validate" id="basic_validate" novalidate="novalidate">
 					<!-- 加载编辑器的容器 -->
+					<input type="hidden" name="topic_id" value="${topicThirdSug.topic_id}">
 					<script id="container" name="content" type="text/plain">
-					这里写你的初始化内容
+					${report.midReport}
 					</script>
 					<div class="control-group">
-						<label class="control-label">老师意见: 通过</label>
+						<label class="control-label">老师意见:${topicThirdSug.mid_sug}</label>
 					</div>
 					<div class="form-actions">
 						<input type="submit" value="提交" class="btn btn-primary" />

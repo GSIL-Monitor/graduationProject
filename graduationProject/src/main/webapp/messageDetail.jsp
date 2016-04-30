@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ page contentType="text/html;charset=utf-8" %>
+<%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String path = request.getContextPath();
 %>
@@ -48,9 +49,11 @@
 			<div class="container-fluid">
 				<!-- 加载编辑器的容器 -->
 				<script id="container" name="content" type="text/plain">
-					这里写你的初始化内容
+					${message.content}
 				</script>
-
+				<c:if test="${message.isHaveDoc==1}">
+					<a href="messageAction_download?docName=${message.docName}">下载附件</a>
+				</c:if>
 				<div class="row-fluid">
 					<div id="footer" class="span12">
 						2016 &copy; Graduation Thesis Management System. Brought to you by Wuhao

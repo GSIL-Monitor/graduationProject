@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ page contentType="text/html;charset=utf-8" %>
+<%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String path = request.getContextPath();
 %>
@@ -81,43 +82,53 @@
 							<h5>论文终稿提交</h5>
 						</div>
 						<div class="widget-content nopadding">
-							<form action="topicAction_finalSave" method="get" class="form-horizontal" >
+							<form action="studentAction_finalSave" method="post" class="form-horizontal" enctype="multipart/form-data">
 								<div class="control-group">
 									<label class="control-label">word格式论文:</label>
 									<div class="controls">
-										<label>未提交</label>
+										<c:if test="${topicFinalInfo.isSaveWord==1}">
+											<label>已提交</label>
+										</c:if>
+										<c:if test="${topicFinalInfo.isSaveWord==0}">
+											<label>未提交</label>
+										</c:if>
 									</div>
 								</div>
 								<div class="control-group">
 									<label class="control-label">pdf   格式论文:</label>
 									<div class="controls">
-										<babel>未提交</babel>
+										<c:if test="${topicFinalInfo.isSavePdf==1}">
+											<label>已提交</label>
+										</c:if>
+										<c:if test="${topicFinalInfo.isSavePdf==0}">
+											<label>未提交</label>
+										</c:if>
 									</div>
 								</div>
 								<div class="control-group">
 									<label class="control-label">提交状态:</label>
 									<div class="controls">
-										<label>学生还未提交</label>
+										<label>${status}</label>
 									</div>
 								</div>
 								<div class="control-group">
 									<label class="control-label">教师意见:</label>
 									<div class="controls">
-										<label></label>
+										<label>${topicThirdSug.end_sug}</label>
 									</div>
 								</div>
 								<br/><br/><br/>
 								<div class="control-group">
 									<label class="control-label">WORD格式提交</label>
 									<div class="controls">
-										<input type="file" />
+										<input type="file"  name="word"/>
 									</div>
 								</div>
 
 								<div class="control-group">
 									<label class="control-label">PDF格式提交</label>
 									<div class="controls">
-										<input type="file" />
+										<input type="file" name="pdf"/>
 									</div>
 								</div>
 								<div class="form-actions">

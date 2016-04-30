@@ -14,6 +14,10 @@ public interface UserDao {
 
 	public User getUser(String username,String password) throws Exception;
 
+	public User getUser(String uid) throws Exception;
+
 	public boolean UserIsExit(String username) throws Exception;
+
+	public long countUser(String sqlWhere) throws Exception;
 	
 }
