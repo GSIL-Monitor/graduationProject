@@ -31,7 +31,6 @@ public class PermissionFilter implements Filter {
 
         // 获得用户请求的URI
         String path = servletRequest.getRequestURI();
-        logger.info("path:"+path);
 
         String permissionType=request.getParameter("permissionType");
         if (permissionType==null){

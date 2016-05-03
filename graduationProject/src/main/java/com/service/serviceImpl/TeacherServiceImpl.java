@@ -5,7 +5,9 @@ import com.dao.*;
 import com.opensymphony.xwork2.ActionContext;
 import com.service.StudentService;
 import com.service.TeacherService;
+import com.utils.FileUtils;
 import com.utils.RoleUtils;
+import net.sf.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -121,6 +123,7 @@ public class TeacherServiceImpl implements TeacherService{
 
     public void addPer(TopicCheckProcess topicCheckProcess) {
         try {
+            FileUtils.saveper("teacher", JSONObject.fromObject(topicCheckProcess).toString());
             topicCheckProcessDao.saveTopicCheckProcess(topicCheckProcess);
         }catch (Exception e){
             logger.error(e.getMessage());
