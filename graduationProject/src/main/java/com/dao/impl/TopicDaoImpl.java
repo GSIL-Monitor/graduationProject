@@ -120,10 +120,10 @@ public class TopicDaoImpl implements TopicDao{
 		session.close();
 		return list;
 	}
-	public List queryAllTopicBymajorName(String majorName) throws Exception {
+	public List queryAllTopicBymajorName(String majorName,String sqlWhere) throws Exception {
 		Session session;//hibernate会话
 		session=sessionFactory.openSession();
-		String selectHql="select topic from Topic as topic where topic.majorName=? and topic.status=2";
+		String selectHql="select topic from Topic as topic where topic.majorName=? and topic.status=2 and "+sqlWhere;
 		Query query=session.createQuery(selectHql);
 		query.setString(0, majorName);
 		List<Topic> list=query.list();
@@ -133,7 +133,7 @@ public class TopicDaoImpl implements TopicDao{
 	public List queryAllTopicsByStatus(String teacher_id,String statusSql){
 		Session session;//hibernate会话
 		session=sessionFactory.openSession();
-		String selectHql="select topic from topic as topic where topic.topic_id in (select topicStatus.topicId from TopicStatus as topicStatus where "+statusSql+") ";
+		String selectHql="select topic from Topic as topic where topic.topic_id in (select topicStatus.topicId from TopicStatus as topicStatus where "+statusSql+") ";
 		Query query=session.createQuery(selectHql);
 		List<Topic> list=query.list();
 		session.close();

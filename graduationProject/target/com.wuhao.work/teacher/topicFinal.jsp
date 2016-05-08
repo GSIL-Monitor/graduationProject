@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ page contentType="text/html;charset=utf-8" %>
+<%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String path = request.getContextPath();
 %>
@@ -92,17 +93,27 @@
 						</div>
 						<div class="widget-content nopadding">
 							<form action="topicAction_finalSave" method="get" class="form-horizontal" >
-								<input type="hidden" name="topic_id" value="${report.topic_id}">
+								<input type="hidden" name="topic_id" value="${topicFinalInfo.topic_id}">
 								<div class="control-group">
 									<label class="control-label">word格式论文:</label>
 									<div class="controls">
-										<label>未提交</label>
+										<c:if test="${topicFinalInfo.isSaveWord==1}">
+											<a href="messageAction_download?docName=${topicFinalInfo.wordName}"><label>下载word版论文</label></a>
+										</c:if>
+										<c:if test="${topicFinalInfo.isSaveWord==0}">
+											<label>未提交</label>
+										</c:if>
 									</div>
 								</div>
 								<div class="control-group">
 									<label class="control-label">pdf   格式论文:</label>
 									<div class="controls">
-										<babel>未提交</babel>
+										<c:if test="${topicFinalInfo.isSavePdf==1}">
+											<a href="messageAction_download?docName=${topicFinalInfo.pdfName}"><label>下载pdf版论文</label></a>
+										</c:if>
+										<c:if test="${topicFinalInfo.isSavePdf==0}">
+											<label>未提交</label>
+										</c:if>
 									</div>
 								</div>
 								<div class="control-group">

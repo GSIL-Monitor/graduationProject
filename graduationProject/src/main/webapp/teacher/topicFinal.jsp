@@ -93,7 +93,7 @@
 						</div>
 						<div class="widget-content nopadding">
 							<form action="topicAction_finalSave" method="get" class="form-horizontal" >
-								<input type="hidden" name="topic_id" value="${report.topic_id}">
+								<input type="hidden" name="topic_id" value="${topicFinalInfo.topic_id}">
 								<div class="control-group">
 									<label class="control-label">word格式论文:</label>
 									<div class="controls">

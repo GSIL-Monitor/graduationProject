@@ -189,8 +189,8 @@ public class StudentAction extends ActionSupport {
 		User user=(User)session.get("user");
 		Student student=studentService.getStudent(user.getUser_id());
 		session.put("student",student);
-		List topicList=topicService.queryAllTopicBymajorName(student.getMajorName());
-		System.out.println("test:" + topicList.toString());
+		String sqlwhere="topic.topic_id not in (select student.topic_id from Student as student where student.status=1)";
+		List<Topic> topicList=topicService.queryAllTopicBymajorName(student.getMajorName(),sqlwhere);
 		session.put("topicList", topicList);
 		return "choice";
 	}

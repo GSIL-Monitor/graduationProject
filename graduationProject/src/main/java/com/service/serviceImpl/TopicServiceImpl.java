@@ -112,10 +112,10 @@ public class TopicServiceImpl implements TopicService{
         }
         return list;
     }
-    public List queryAllTopicBymajorName(String majorName) {
+    public List queryAllTopicBymajorName(String majorName,String sqlWhere) {
         List list=new ArrayList();
         try {
-            list= topicDao.queryAllTopicBymajorName(majorName);
+            list= topicDao.queryAllTopicBymajorName(majorName,sqlWhere);
         }catch (Exception e){
             logger.error(e.getMessage());
         }
@@ -200,20 +200,25 @@ public class TopicServiceImpl implements TopicService{
         }
 
     }
-    public void pass(String topic_id,int sorce,String step){
+    public void pass(String topic_id,int sorce,String step,String info){
         try {
             TopicStatus topicStatus=topicStatusDao.getTopicStatusByTopicId(topic_id);
+            TopicThirdSug topicThirdSug=topicThirdSugDao.getTopicThirdSugByTopicId(topic_id);
             if (step.equals("begin")){
                 topicStatus.setTopicBegin(2);
                 topicStatus.setBeginScore(sorce);
+                topicThirdSug.setBegin_sug(info);
             }else if(step.equals("mid")){
                 topicStatus.setTopicMid(2);
                 topicStatus.setMidScore(sorce);
+                topicThirdSug.setMid_sug(info);
             }else {
                 topicStatus.setTopicFinal(2);
                 topicStatus.setFinalScore(sorce);
+                topicThirdSug.setEnd_sug(info);
             }
             topicStatusDao.updateTopicStatus(topicStatus);
+            topicThirdSugDao.updateTopicThirdSug(topicThirdSug);
 
         }catch (Exception e){
             e.printStackTrace();

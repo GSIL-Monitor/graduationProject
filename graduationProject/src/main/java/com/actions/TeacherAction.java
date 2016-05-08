@@ -203,7 +203,8 @@ public class TeacherAction extends ActionSupport {
 		Map session=ActionContext.getContext().getSession();
 		Student student=studentService.getStudentByid(student_id);
 		session.put("student",student);
-		List topicList=topicService.queryAllTopicBymajorName(student.getMajorName());
+		String sqlwhere="topic.topic_id not in (select student.topic_id from Student as student where student.status=1)";
+		List topicList=topicService.queryAllTopicBymajorName(student.getMajorName(),sqlwhere);
 		session.put("topicList",topicList);
 		return "studentSelect";
 	}

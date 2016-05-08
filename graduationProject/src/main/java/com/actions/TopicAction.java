@@ -162,7 +162,7 @@ public class TopicAction extends ActionSupport {
 		if (is_pass==0){
 			topicService.reject(topic_id, "begin",teacher_info);
 		}else {
-			topicService.pass(topic_id,sorce,"begin");
+			topicService.pass(topic_id,sorce,"begin",teacher_info);
 		}
 		return "teacherHome";
 	}
@@ -170,7 +170,7 @@ public class TopicAction extends ActionSupport {
 		if (is_pass==0){
 			topicService.reject(topic_id, "mid",teacher_info);
 		}else {
-			topicService.pass(topic_id,sorce,"mid");
+			topicService.pass(topic_id,sorce,"mid",teacher_info);
 		}
 		return "teacherHome";
 	}
@@ -178,7 +178,7 @@ public class TopicAction extends ActionSupport {
 		if (is_pass==0){
 			topicService.reject(topic_id, "final",teacher_info);
 		}else {
-			topicService.pass(topic_id,sorce,"final");
+			topicService.pass(topic_id,sorce,"final",teacher_info);
 		}
 		return "teacherHome";
 	}

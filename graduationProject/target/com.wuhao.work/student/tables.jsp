@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ page contentType="text/html;charset=utf-8" %>
+<%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String path = request.getContextPath();
 %>
@@ -87,12 +88,12 @@
 									</tr>
 									</thead>
 									<tbody>
-									<c:forEach var="topic" items="${topicList}">
+									<c:forEach var="item" items="${topicList}">
 										<tr class="gradeX">
-											<td><a href="topicAction_detail?topic_id=${topic.topic_id}" target="_blank">${topic.name}</a></td>
-											<td>${topic.type}</td>
-											<td>${topic.tutorName}</td>
-											<td><a href="topicAction_select?topic_id=${topic.topic_id}">［选题］</a></td>
+											<td><a href="topicAction_detail?topic_id=${item.topic_id}" target="_blank">${item.name}</a></td>
+											<td>${item.type}</td>
+											<td>${item.tutorName}</td>
+											<td><a href="topicAction_select?topic_id=${item.topic_id}">［选题］</a></td>
 										</tr>
 									</c:forEach>
 									</tbody>

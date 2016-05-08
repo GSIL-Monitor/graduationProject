@@ -34,7 +34,7 @@ public class RoleUtils {
 
     }
     public static double countScore(TopicStatus topicStatus){
-        if(topicStatus.getTopicBegin()!=0 && topicStatus.getTopicMid()!=0 &&topicStatus.getTopicFinal()!=0){
+        if(topicStatus.getTopicBegin()==2 && topicStatus.getTopicMid()==2 &&topicStatus.getTopicFinal()==2){
             return topicStatus.getBeginScore()*0.2+topicStatus.getMidScore()*0.3+topicStatus.getFinalScore()*0.5;
         }else {
             return 0;

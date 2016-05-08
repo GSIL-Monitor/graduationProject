@@ -17,7 +17,7 @@ public interface TopicDao {
 	
 	public List queryAllTopics(String sqlWhere) throws Exception;
 
-	public List queryAllTopicBymajorName(String majorName) throws Exception;
+	public List queryAllTopicBymajorName(String majorName,String sqlWhere) throws Exception;
 
 	public void lockTopic(String topic_id) throws Exception;
 

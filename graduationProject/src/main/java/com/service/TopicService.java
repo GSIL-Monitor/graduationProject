@@ -24,13 +24,13 @@ public interface TopicService {
 
     public Report getTopicReport(String topic_id);
 
-    public List queryAllTopicBymajorName(String majorName);
+    public List queryAllTopicBymajorName(String majorName,String sqlWhere);
 
     public void commit(String topic_id,String comment,String step);
 
     public void reject(String topic_id,String step,String teacher_info);
 
-    public void pass(String topic_id,int sorce,String step);
+    public void pass(String topic_id,int sorce,String step,String info);
 
     public TopicThirdSug getSug(String topic_id);
 
