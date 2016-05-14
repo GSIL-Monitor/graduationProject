@@ -189,8 +189,8 @@ public class StudentAction extends ActionSupport {
 		User user=(User)session.get("user");
 		Student student=studentService.getStudent(user.getUser_id());
 		session.put("student",student);
-		String sqlwhere="topic.topic_id not in (select student.topic_id from Student as student where student.status=1)";
-		List<Topic> topicList=topicService.queryAllTopicBymajorName(student.getMajorName(),sqlwhere);
+		String sqlwhere="topic.topic_id not in (select student.topic_id from Student as student where student.status=1 and student.topic_id<>NULL)";
+		List<Topic> topicList=topicService.queryAllTopicBymajorName(student.getMajorName(), sqlwhere);
 		session.put("topicList", topicList);
 		return "choice";
 	}
@@ -199,7 +199,7 @@ public class StudentAction extends ActionSupport {
 		User user=(User)session.get("user");
 		student=studentService.getStudent(user.getUser_id());
 		TopicStatus topicStatus=topicService.getTopicStatus(student.getTopic_id());
-		if (topicStatus.getTopicBegin()!=0){
+		if (topicStatus.getTopicBegin()!=0 || student.getTopic_id()==null){
 			return "home";
 		}
 		TopicThirdSug topicThirdSug=studentService.getSug(user.getUser_id());
@@ -231,7 +231,7 @@ public class StudentAction extends ActionSupport {
 		User user=(User)session.get("user");
 		student=studentService.getStudent(user.getUser_id());
 		TopicStatus topicStatus=topicService.getTopicStatus(student.getTopic_id());
-		if (topicStatus.getTopicMid()!=0){
+		if (topicStatus.getTopicMid()!=0 || student.getTopic_id()==null){
 			return "home";
 		}
 		TopicThirdSug topicThirdSug=studentService.getSug(user.getUser_id());
@@ -244,18 +244,22 @@ public class StudentAction extends ActionSupport {
 		return "midRead";
 	}
 	public String topFinal(){
-		Map session =ActionContext.getContext().getSession();
-		User user=(User)session.get("user");
-		student = studentService.getStudent(user.getUser_id());
-		TopicStatus topicStatus = studentService.getStatus(student);
-		if (topicStatus.getTopicFinal()!=0){
-			return "home";
+		try {
+			Map session = ActionContext.getContext().getSession();
+			User user = (User) session.get("user");
+			student = studentService.getStudent(user.getUser_id());
+			TopicStatus topicStatus = studentService.getStatus(student);
+			if (topicStatus.getTopicFinal() != 0 || student.getTopic_id() == null) {
+				return "home";
+			}
+			TopicFinalInfo topicFinalInfo = studentService.getFinalInfo(student);
+			TopicThirdSug topicThirdSug = studentService.getSug(user.getUser_id());
+			session.put("status", RoleUtils.covent(topicStatus.getTopicFinal()));
+			session.put("topicFinalInfo", topicFinalInfo);
+			session.put("topicThirdSug", topicThirdSug);
+		}catch (Exception e){
+			e.printStackTrace();
 		}
-		TopicFinalInfo topicFinalInfo = studentService.getFinalInfo(student);
-		TopicThirdSug topicThirdSug = studentService.getSug(user.getUser_id());
-		session.put("status", RoleUtils.covent(topicStatus.getTopicFinal()));
-		session.put("topicFinalInfo", topicFinalInfo);
-		session.put("topicThirdSug", topicThirdSug);
 		return "final";
 	}
 	public String change() {
@@ -265,7 +269,6 @@ public class StudentAction extends ActionSupport {
 		Map session=ActionContext.getContext().getSession();
 		User user=(User)session.get("user");
 		student=studentService.getStudent(user.getUser_id());
-		System.out.println("word:" + wordContentType + ",pdf:" + pdfContentType);
 		studentService.commitFinal(student, word, pdf, wordFileName, pdfFileName);
 		return "home";
 	}

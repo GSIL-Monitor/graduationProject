@@ -98,36 +98,36 @@
 									<div class="control-group">
 										<label class="control-label">提交论文题目时间</label>
 										<div class="controls">
-											<label>开始时间</label><input type="date" name="topicCheckProcess.topicCommitBegin" >
-											<label>结束时间</label><input type="date" name="topicCheckProcess.topicCommitEnd" >
+											<label>开始时间</label><input type="date" name="topicCheckProcess.topicCommitBegin" value="${topicCheckProcess.topicCommitBegin}">
+											<label>结束时间</label><input type="date" name="topicCheckProcess.topicCommitEnd" value="${topicCheckProcess.topicCommitEnd}">
 										</div>
 									</div>
 									<div class="control-group">
 										<label class="control-label">为学生选课时间</label>
 										<div class="controls">
-											<label>开始时间</label><input type="date" name="topicCheckProcess.choiceBegin" >
-											<label>结束时间</label><input type="date" name="topicCheckProcess.choiceEnd" >
+											<label>开始时间</label><input type="date" name="topicCheckProcess.choiceBegin" value="${topicCheckProcess.choiceBegin}">
+											<label>结束时间</label><input type="date" name="topicCheckProcess.choiceEnd" value="${topicCheckProcess.choiceEnd}">
 										</div>
 									</div>
 									<div class="control-group">
 										<label class="control-label">审核学生开题报告时间</label>
 										<div class="controls">
-											<label>开始时间</label><input type="date" name="topicCheckProcess.topicBegin" >
-											<label>结束时间</label><input type="date" name="topicCheckProcess.topicEnd" >
+											<label>开始时间</label><input type="date" name="topicCheckProcess.topicBegin" value="${topicCheckProcess.topicBegin}">
+											<label>结束时间</label><input type="date" name="topicCheckProcess.topicEnd" value="${topicCheckProcess.topicEnd}">
 										</div>
 									</div>
 									<div class="control-group">
 										<label class="control-label">审核学生中期报告时间</label>
 										<div class="controls">
-											<label>开始时间</label><input type="date" name="topicCheckProcess.topicMidBegin" >
-											<label>结束时间</label><input type="date" name="topicCheckProcess.topicMidEnd" >
+											<label>开始时间</label><input type="date" name="topicCheckProcess.topicMidBegin" value="${topicCheckProcess.topicMidBegin}">
+											<label>结束时间</label><input type="date" name="topicCheckProcess.topicMidEnd" value="${topicCheckProcess.topicMidEnd}">
 										</div>
 									</div>
 									<div class="control-group">
 										<label class="control-label">审核学生终期论文时间</label>
 										<div class="controls">
-											<label>开始时间</label><input type="date" name="topicCheckProcess.topicFinalBegin" >
-											<label>结束时间</label><input type="date" name="topicCheckProcess.topicFinalEnd" >
+											<label>开始时间</label><input type="date" name="topicCheckProcess.topicFinalBegin" value="${topicCheckProcess.topicFinalBegin}">
+											<label>结束时间</label><input type="date" name="topicCheckProcess.topicFinalEnd" value="${topicCheckProcess.topicFinalEnd}">
 										</div>
 									</div>
                                     <div class="form-actions">

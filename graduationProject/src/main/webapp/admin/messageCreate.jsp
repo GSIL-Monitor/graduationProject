@@ -96,6 +96,11 @@
 				<form action="adminAction_msgCreate" method="post" class="form-horizontal" name="basic_validate" id="basic_validate" novalidate="novalidate" enctype="multipart/form-data">
 					<!-- 加载编辑器的容器 -->
 					<div class="control-group">
+						<div class="controls">
+							<label><font color="red">${errorMsg}</font></label>
+						</div>
+					</div>
+					<div class="control-group">
 						<label class="control-label">标题</label>
 						<div class="controls">
 							<input type="text" name="message.title" id="title"/>

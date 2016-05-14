@@ -123,9 +123,13 @@ public class TeacherAction extends ActionSupport {
 	}
 	public String update(){
 		teacherService.update(teacher);
-		return SUCCESS;
+		return "home";
 	}
 	public String info(){
+		Map session=ActionContext.getContext().getSession();
+		User user=(User)session.get("user");
+		teacher=teacherService.getTeacherByUid(user.getUser_id());
+		session.put("teacher", teacher);
 		return "info";
 	}
 	public String messageDetail(){
@@ -203,7 +207,7 @@ public class TeacherAction extends ActionSupport {
 		Map session=ActionContext.getContext().getSession();
 		Student student=studentService.getStudentByid(student_id);
 		session.put("student",student);
-		String sqlwhere="topic.topic_id not in (select student.topic_id from Student as student where student.status=1)";
+		String sqlwhere="topic.topic_id not in (select student.topic_id from Student as student where student.status=1 and student.topic_id<>NULL)";
 		List topicList=topicService.queryAllTopicBymajorName(student.getMajorName(),sqlwhere);
 		session.put("topicList",topicList);
 		return "studentSelect";

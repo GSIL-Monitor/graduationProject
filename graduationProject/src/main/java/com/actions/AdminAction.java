@@ -218,11 +218,22 @@ public class AdminAction extends ActionSupport {
 		this.studentService = studentService;
 	}
 	public String stuAdd(){
+		String errorMsg=studentService.checkstudent(student,user);
+		if(errorMsg!=null) {
+			ActionContext.getContext().getSession().put("errorMsg", errorMsg);
+			return "STU_CREATE";
+		}
 		studentService.add(student,user);
 		return "home";
 	}
 	public String teaAdd() {
-		teacherService.add(teacher,user);
+		String errorMsg=teacherService.checkTeacher(teacher,user);
+		if(errorMsg!=null) {
+			ActionContext.getContext().getSession().put("errorMsg", errorMsg);
+			return "TEA_CREATE";
+		}
+
+		teacherService.add(teacher, user);
 		return "home";
 	}
 	public String stuDelete(){
@@ -246,6 +257,7 @@ public class AdminAction extends ActionSupport {
 		return "TEA_DELETE";
 	}
 	public String stuCreate(){
+		ActionContext.getContext().getSession().remove("errorMsg");
 		return "STU_CREATE";
 	}
 	public String stuUpdate(){
@@ -277,6 +289,7 @@ public class AdminAction extends ActionSupport {
 		return SUCCESS;
 	}
 	public String teaCreate(){
+		ActionContext.getContext().getSession().remove("errorMsg");
 		return "TEA_CREATE";
 	}
 	public String teaUpdate(){
@@ -285,9 +298,13 @@ public class AdminAction extends ActionSupport {
 		return "TEA_UPDATE";
 	}
 	public String studentPer() {
+		topicProcess=topicService.getStudentPer();
+		ActionContext.getContext().getSession().put("topicProcess",topicProcess);
 		return "STUDENT_PER";
 	}
 	public String teacherPer(){
+		topicCheckProcess=topicService.getTeacherPer();
+		ActionContext.getContext().getSession().put("topicCheckProcess",topicCheckProcess);
 		return "TEACHER_PER";
 	}
 	public String stuPer() {
@@ -318,9 +335,18 @@ public class AdminAction extends ActionSupport {
 		return "check";
 	}
 	public String messageCreate() {
+		ActionContext.getContext().getSession().remove("errorMsg");
 		return "MSG_CRE";
 	}
 	public String msgCreate() {
+		if ( message.getTitle().equals("")){
+			ActionContext.getContext().getSession().put("errorMsg","标题不能为空");
+			return "MSG_CRE";
+		}
+		if ( message.getContent().equals("")){
+			ActionContext.getContext().getSession().put("errorMsg","内容不能为空");
+			return "MSG_CRE";
+		}
 		messageService.save(message,upload,uploadFileName);
 		return "CRE_MSG";
 	}

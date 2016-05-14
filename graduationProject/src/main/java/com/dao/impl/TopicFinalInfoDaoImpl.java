@@ -23,7 +23,7 @@ public class TopicFinalInfoDaoImpl implements TopicFinalInfoDao{
 	public void saveTopicFinalInfo(TopicFinalInfo topicFinalInfo) throws Exception {
 		Session session;//hibernate会话
 		Transaction transaction; //hiberante事务
-		session=sessionFactory.getCurrentSession();
+		session=sessionFactory.openSession();
 		transaction = session.beginTransaction();
 		session.save(topicFinalInfo);
 		transaction.commit();

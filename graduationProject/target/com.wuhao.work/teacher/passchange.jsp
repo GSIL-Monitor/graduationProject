@@ -111,7 +111,7 @@
 											</div>
 										</div>
 									    <div class="control-group">
-											<div class="controls">${passError}</div>
+											<div class="controls"><font color="red">${passError}</font></div>
 										</div>
 										<div class="form-actions">
 											<input type="submit" value="修改" class="btn btn-primary" maxlength="30"/>

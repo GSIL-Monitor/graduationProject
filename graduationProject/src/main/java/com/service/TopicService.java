@@ -37,4 +37,8 @@ public interface TopicService {
     public SumBean count(Teacher teacher);
 
     public TopicFinalInfo getTopicFinalInfoByTopicId(String topic_id);
+
+    public TopicProcess getStudentPer();
+
+    public TopicCheckProcess getTeacherPer();
 }

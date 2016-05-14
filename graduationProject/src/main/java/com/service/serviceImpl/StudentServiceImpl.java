@@ -144,33 +144,38 @@ public class StudentServiceImpl implements StudentService{
         return list;
     }
     public List queryallByMajorName(String majorName){
-        List list=new ArrayList();
         try {
-            list=studentDao.queryAllByMajorName(majorName);
+            List list=studentDao.queryAllByMajorName(majorName);
+            if (!list.isEmpty()) {
+                return list;
+            }
         }catch (Exception e){
             logger.error(e.getMessage());
         }
-        return list;
+        return new ArrayList();
     }
     public Student getStudent(String uid) {
-        Student student=new Student();
         try {
-            student=studentDao.getStudent(uid);
+            Student student=studentDao.getStudent(uid);
+            if (student!=null){
+                return student;
+            }
         }catch (Exception e){
             logger.error(e.getMessage());
         }
-        return student;
+        return new Student();
     }
 
     public Student getStudentByid(long id) {
-        Student student=new Student();
         try {
-            student=studentDao.getStudentByid(id);
-            System.out.println(student.toString());
+            Student student=studentDao.getStudentByid(id);
+            if (student!=null){
+                return student;
+            }
         }catch (Exception e){
             e.printStackTrace();
         }
-        return student;
+        return new Student();
     }
 
     public void addPer(TopicProcess topicProcess) {
@@ -201,25 +206,29 @@ public class StudentServiceImpl implements StudentService{
             logger.error(e.getMessage());
         }
 
-        return null;
+        return new TopicThirdSug();
     }
     public TopicFinalInfo getFinalInfo(Student student) {
         try {
             TopicFinalInfo topicFinalInfo=topicFinalInfoDao.getTopicFinalInfoByTopicId(student.getTopic_id());
-            return topicFinalInfo;
+            if (topicFinalInfo!=null) {
+                return topicFinalInfo;
+            }
         }catch (Exception e){
             e.printStackTrace();
         }
-        return null;
+        return new TopicFinalInfo();
     }
     public TopicStatus getStatus(Student student){
         try {
             TopicStatus topicStatus=topicStatusDao.getTopicStatusByTopicId(student.getTopic_id());
-            return topicStatus;
+            if(topicStatus!=null){
+                return topicStatus;
+            }
         }catch (Exception e){
             e.printStackTrace();
         }
-        return null;
+        return new TopicStatus();
     }
     public void commitFinal(Student student,File word,File pdf,String wordName,String pdfName){
         try{
@@ -227,12 +236,14 @@ public class StudentServiceImpl implements StudentService{
             TopicFinalInfo topicFinalInfo=topicFinalInfoDao.getTopicFinalInfoByTopicId(student.getTopic_id());
             if (word!=null){
                 topicFinalInfo.setIsSaveWord(1);
-                topicFinalInfo.setWordName(FileUtils.formatFileName(wordName));
+                wordName=FileUtils.formatFileName(wordName);
+                topicFinalInfo.setWordName(wordName);
                 FileUtils.saveFile(wordName,word);
             }
             if (pdf!=null){
                 topicFinalInfo.setIsSavePdf(1);
-                topicFinalInfo.setPdfName(FileUtils.formatFileName(pdfName));
+                pdfName=FileUtils.formatFileName(pdfName);
+                topicFinalInfo.setPdfName(pdfName);
                 FileUtils.saveFile(pdfName, pdf);
             }
             topicStatus.setTopicFinal(1);
@@ -241,5 +252,34 @@ public class StudentServiceImpl implements StudentService{
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+    public String checkstudent(Student student,User user){
+        String error=null;
+        try {
+            if (!userDao.UserIsExit(user.getUsername())){
+                error="账号已存在";
+            }
+            if(user.getUsername().equals("")){
+                error="账号不能为空";
+            }
+            if(user.getUsername().length()>40 || user.getUsername().length()<6){
+                error="账号长度应在6-40之间";
+            }
+            if(user.getUsername().matches("^[0-9]*$")){
+                error="账号不能是纯数字";
+            }
+            if (student.getName().equals("")){
+                error="姓名不能为空";
+            }
+            if (student.getClassName().equals("")){
+                error="班级不能为空";
+            }
+            if (student.getStuNo().equals("")){
+                error="学号不能为空";
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return error;
     }
 }

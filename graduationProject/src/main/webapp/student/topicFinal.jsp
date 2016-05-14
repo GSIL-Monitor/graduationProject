@@ -121,14 +121,14 @@
 								<div class="control-group">
 									<label class="control-label">WORD格式提交</label>
 									<div class="controls">
-										<input type="file"  name="word"/>
+										<label><input type="file"  name="word"/>&nbsp;&nbsp;&nbsp;<font color="red">温馨提示: 上传文件大小请不要超过20M</font></label>
 									</div>
 								</div>
 
 								<div class="control-group">
 									<label class="control-label">PDF格式提交</label>
 									<div class="controls">
-										<input type="file" name="pdf"/>
+										<label><input type="file" name="pdf"/>&nbsp;&nbsp;&nbsp;<font color="red">温馨提示: 上传文件大小请不要超过20M</font></label>
 									</div>
 								</div>
 								<div class="form-actions">

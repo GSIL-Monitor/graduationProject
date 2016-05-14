@@ -102,6 +102,34 @@ public class TeacherServiceImpl implements TeacherService{
             logger.error(e.getMessage());
         }
     }
+
+    public String checkTeacher(Teacher teacher, User user) {
+        String error=null;
+        try {
+            if (!userDao.UserIsExit(user.getUsername())){
+                error="账号已存在";
+            }
+            if(user.getUsername().equals("")){
+                error="账号不能为空";
+            }
+            if(user.getUsername().length()>40 || user.getUsername().length()<6){
+                error="账号长度应在6-40之间";
+            }
+            if(user.getUsername().matches("^[0-9]*$")){
+                error="账号不能是纯数字";
+            }
+            if(teacher.getName().equals("")){
+                error="姓名不能为空";
+            }
+            if(teacher.getTeacher_no().equals("")){
+                error="工号不能为空";
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return error;
+    }
+
     public Teacher getTeacherByteacherId(String teacher_id) {
         Teacher teacher=null;
         try {
@@ -177,10 +205,10 @@ public class TeacherServiceImpl implements TeacherService{
     public List getProcessList(String teacher_id){
         List processList=new ArrayList();
         String statusSql="1=1";
-        ProcessBean processBean=new ProcessBean();
         try {
-            List<Topic> TopicList= topicDao.queryAllTopicsByStatus(teacher_id,statusSql);
-            for(Topic topic:TopicList){
+            List<Topic> topicList= topicDao.queryAllTopicsByStatus(teacher_id,statusSql);
+            for(Topic topic:topicList){
+                ProcessBean processBean=new ProcessBean();
                 Student student=studentDao.getStudentByTopicId(topic.getTopic_id());
                 TopicStatus topicStatus=topicStatusDao.getTopicStatusByTopicId(topic.getTopic_id());
                 processBean.setTopic_id(topic.getTopic_id());

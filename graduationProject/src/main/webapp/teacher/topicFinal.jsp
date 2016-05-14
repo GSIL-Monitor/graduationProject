@@ -92,7 +92,7 @@
 							<h5>论文终稿提交</h5>
 						</div>
 						<div class="widget-content nopadding">
-							<form action="topicAction_finalSave" method="get" class="form-horizontal" >
+							<form action="topicAction_finalSave" method="get" class="form-horizontal" onsubmit="return checkParm()">
 								<input type="hidden" name="topic_id" value="${topicFinalInfo.topic_id}">
 								<div class="control-group">
 									<label class="control-label">word格式论文:</label>
@@ -125,15 +125,15 @@
 								<div class="control-group">
 									<label class="control-label">分数(百分制):</label>
 									<div class="controls">
-										<input type="number" name="sorce" />
+										<input type="number" name="sorce" id="sorce"/>
 									</div>
 								</div>
 
 								<div class="control-group">
 									<label class="control-label">是否通过:</label>
 									<div class="controls">
-										<label><input type="radio" name="is_pass" value="0" checked="checked"/> 否</label>
-										<label><input type="radio" name="is_pass" value="1"/> 是</label>
+										<label><input type="radio" name="is_pass" value="0" checked="checked" id="is_pass_false"/> 否</label>
+										<label><input type="radio" name="is_pass" value="1" id="is_pass_true"/> 是</label>
 									</div>
 								</div>
 								<div class="form-actions">
@@ -154,15 +154,36 @@
 		</div>
 		
 		
-            
-            <script src="../js/jquery.min.js"></script>
-            <script src="../js/jquery.ui.custom.js"></script>
-            <script src="../js/bootstrap.min.js"></script>
-            <script src="../js/bootstrap-colorpicker.js"></script>
-            <script src="../js/bootstrap-datepicker.js"></script>
-            <script src="../js/jquery.uniform.js"></script>
-            <script src="../js/select2.min.js"></script>
-            <script src="../js/unicorn.js"></script>
-            <script src="../js/unicorn.form_common.js"></script>
+	<script>
+		function checkParm(){
+			var sorce = document.getElementById("sorce").value;
+			if(document.getElementById("is_pass_false").checked){
+				return true;
+			}
+			if (sorce==""){
+				alert("成绩不能为空");
+				return false;
+			}
+			if(!isNaN(sorce)) {
+				if(sorce>=0 && sorce<=100){
+					return true;
+				}else{
+					alert("成绩应该在0-100之间");
+					return false;
+				}
+			}else{
+				alert("成绩不合法");
+			}
+		}
+	</script>
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/jquery.ui.custom.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/bootstrap-colorpicker.js"></script>
+	<script src="../js/bootstrap-datepicker.js"></script>
+	<script src="../js/jquery.uniform.js"></script>
+	<script src="../js/select2.min.js"></script>
+	<script src="../js/unicorn.js"></script>
+	<script src="../js/unicorn.form_common.js"></script>
 	</body>
 </html>

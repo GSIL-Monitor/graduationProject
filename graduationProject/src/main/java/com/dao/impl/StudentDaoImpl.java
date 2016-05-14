@@ -27,7 +27,7 @@ public class StudentDaoImpl implements StudentDao{
     public void saveStudent(Student student) throws Exception {
         Session session;//hibernate会话
         Transaction transaction; //hiberante事务
-        session=sessionFactory.getCurrentSession();
+        session=sessionFactory.openSession();
         transaction = session.beginTransaction();
         session.save(student);
         transaction.commit();

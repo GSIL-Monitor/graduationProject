@@ -95,5 +95,9 @@ public class UserAction extends ActionSupport {
 		}
 		return RoleUtils.checkRoleType(user.getType());
 	}
+	public String recover() {
+
+		return "recover";
+	}
 	
 }

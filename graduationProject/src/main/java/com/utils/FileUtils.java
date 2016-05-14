@@ -45,7 +45,6 @@ public class FileUtils {
         String path = ServletActionContext.getServletContext().getRealPath("/WEB-INF/permission");
         String filename = path + File.separator +type;
         File file=new File(path);
-        System.out.println("type:" + type + ",value:" + value);
         if(!file .exists()  && !file .isDirectory())
         {
             file .mkdir();

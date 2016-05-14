@@ -98,29 +98,29 @@
 									<div class="control-group">
 										<label class="control-label">学生选题时间</label>
 										<div class="controls">
-											<label>开始时间</label><input type="date" name="topicProcess.choiceBegin" >
-											<label>结束时间</label><input type="date" name="topicProcess.choiceEnd" >
+											<label>开始时间</label><input type="date" name="topicProcess.choiceBegin" value="${topicProcess.choiceBegin}">
+											<label>结束时间</label><input type="date" name="topicProcess.choiceEnd" value="${topicProcess.choiceEnd}">
 										</div>
 									</div>
 									<div class="control-group">
 										<label class="control-label">学生开题报告提交时间</label>
 										<div class="controls">
-											<label>开始时间</label><input type="date" name="topicProcess.topicBegin" >
-											<label>结束时间</label><input type="date" name="topicProcess.topicEnd" >
+											<label>开始时间</label><input type="date" name="topicProcess.topicBegin" value="${topicProcess.topicBegin}">
+											<label>结束时间</label><input type="date" name="topicProcess.topicEnd" value="${topicProcess.topicEnd}">
 										</div>
 									</div>
 									<div class="control-group">
 										<label class="control-label">学生中期报告提交时间</label>
 										<div class="controls">
-											<label>开始时间</label><input type="date" name="topicProcess.topicMidBegin" >
-											<label>结束时间</label><input type="date" name="topicProcess.topicMidEnd" >
+											<label>开始时间</label><input type="date" name="topicProcess.topicMidBegin" value="${topicProcess.topicMidBegin}">
+											<label>结束时间</label><input type="date" name="topicProcess.topicMidEnd"  value="${topicProcess.topicMidEnd}">
 										</div>
 									</div>
 									<div class="control-group">
 										<label class="control-label">学生终期论文提交时间</label>
 										<div class="controls">
-											<label>开始时间</label><input type="date" name="topicProcess.topicFinalBegin" >
-											<label>结束时间</label><input type="date" name="topicProcess.topicFinalEnd" >
+											<label>开始时间</label><input type="date" name="topicProcess.topicFinalBegin" value="${topicProcess.topicFinalBegin}">
+											<label>结束时间</label><input type="date" name="topicProcess.topicFinalEnd" value="${topicProcess.topicFinalEnd}">
 										</div>
 									</div>
                                     <div class="form-actions">

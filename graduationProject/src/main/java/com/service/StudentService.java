@@ -38,4 +38,6 @@ public interface StudentService {
 
     public void commitFinal(Student student,File word,File pdf,String wordName,String pdfName);
 
+    public String checkstudent(Student student,User user);
+
 }

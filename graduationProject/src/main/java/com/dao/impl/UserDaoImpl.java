@@ -23,7 +23,7 @@ public class UserDaoImpl  implements UserDao {
 	public void saveUser(User user) throws Exception{
 		Session session;//hibernate会话
 		Transaction transaction; //hiberante事务
-		session=sessionFactory.getCurrentSession();
+		session=sessionFactory.openSession();
 		transaction = session.beginTransaction();
 		session.save(user);
 		transaction.commit();

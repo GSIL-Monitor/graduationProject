@@ -94,6 +94,11 @@
 							<div class="widget-content nopadding">
 								<form class="form-horizontal" method="post" action="adminAction_stuAdd" name="basic_validate" id="basic_validate" novalidate="novalidate" >
 									<div class="control-group">
+										<div class="controls">
+											<label><font color="red">${errorMsg}</font></label>
+										</div>
+									</div>
+									<div class="control-group">
 										<label class="control-label">账户名</label>
 										<div class="controls">
 											<input type="text" name="user.username" id="username"/>

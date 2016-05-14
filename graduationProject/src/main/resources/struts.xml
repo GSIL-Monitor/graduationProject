@@ -18,6 +18,7 @@
             <result name="STUDENT_UPDATE">/student/passchange.jsp</result>
             <result name="TEACHER_UPDATE">/teacher/passchange.jsp</result>
             <result name="ADMIN_UPDATE">/admin/passchange.jsp</result>
+            <result name="recover">/login.jsp</result>
         </action>
     </package>
     <package name="student" namespace="/"  extends="struts-default">

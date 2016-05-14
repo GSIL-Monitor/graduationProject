@@ -13,6 +13,8 @@ public interface TeacherService {
 
     public void add(Teacher teacher,User user) ;
 
+    public String checkTeacher(Teacher teacher,User user);
+
     public Teacher getTeacherByteacherId(String teacher_id);
 
     public Teacher getTeacherByUid(String uid);

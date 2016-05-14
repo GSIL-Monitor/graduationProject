@@ -49,6 +49,8 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
         <property name="topicThirdSugDao" ref="topicThirdSugDao"/>
         <property name="reportDao" ref="reportDao"/>
         <property name="topicFinalInfoDao" ref="topicFinalInfoDao"/>
+        <property name="topicCheckProcessDao" ref="topicCheckProcessDao"/>
+        <property name="topicProcessDao" ref="topicProcessDao"/>
     </bean>
 
     <bean id="messageAction" class="com.actions.MessageAction" scope="prototype">

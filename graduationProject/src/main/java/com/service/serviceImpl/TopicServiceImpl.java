@@ -28,6 +28,26 @@ public class TopicServiceImpl implements TopicService{
 
     private ReportDao reportDao;
 
+    private TopicCheckProcessDao topicCheckProcessDao;
+
+    private TopicProcessDao topicProcessDao;
+
+    public TopicCheckProcessDao getTopicCheckProcessDao() {
+        return topicCheckProcessDao;
+    }
+
+    public void setTopicCheckProcessDao(TopicCheckProcessDao topicCheckProcessDao) {
+        this.topicCheckProcessDao = topicCheckProcessDao;
+    }
+
+    public TopicProcessDao getTopicProcessDao() {
+        return topicProcessDao;
+    }
+
+    public void setTopicProcessDao(TopicProcessDao topicProcessDao) {
+        this.topicProcessDao = topicProcessDao;
+    }
+
     public TopicFinalInfoDao getTopicFinalInfoDao() {
         return topicFinalInfoDao;
     }
@@ -98,7 +118,7 @@ public class TopicServiceImpl implements TopicService{
             topicFinalInfoDao.saveTopicFinalInfo(topicFinalInfo);
             reportDao.saveReport(report);
         }catch (Exception e){
-            logger.error(e.getMessage());
+            e.printStackTrace();
         }
 
     }
@@ -115,7 +135,7 @@ public class TopicServiceImpl implements TopicService{
     public List queryAllTopicBymajorName(String majorName,String sqlWhere) {
         List list=new ArrayList();
         try {
-            list= topicDao.queryAllTopicBymajorName(majorName,sqlWhere);
+            list= topicDao.queryAllTopicBymajorName(majorName, sqlWhere);
         }catch (Exception e){
             logger.error(e.getMessage());
         }
@@ -134,7 +154,10 @@ public class TopicServiceImpl implements TopicService{
     public Topic getTopicByTopicId(String topic_id) {
         Topic topic=new Topic();
         try {
-            topic= topicDao.getTopicByTopicId(topic_id);
+            Topic topicOld= topicDao.getTopicByTopicId(topic_id);
+            if (topicOld!=null){
+                return topicOld;
+            }
         }catch (Exception e){
             logger.error(e.getMessage());
         }
@@ -152,7 +175,10 @@ public class TopicServiceImpl implements TopicService{
     public TopicStatus getTopicStatus(String topic_id){
         TopicStatus topicStatus=new TopicStatus();
         try {
-            topicStatus= topicStatusDao.getTopicStatusByTopicId(topic_id);
+            TopicStatus topicStatusOld= topicStatusDao.getTopicStatusByTopicId(topic_id);
+            if (topicStatusOld!=null){
+                return topicStatusOld;
+            }
         }catch (Exception e){
             logger.error(e.getMessage());
         }
@@ -239,7 +265,7 @@ public class TopicServiceImpl implements TopicService{
             sumBean.setTopicCount(topicDao.countTopicByteacher("1=1",teacher.getTeacher_id()));
             sumBean.setTopicPendingCount(topicDao.countTopicByteacher("status=1",teacher.getTeacher_id()));
             sumBean.setStudentCount(topicDao.countTopicByteacher("topic.topic_id in (select student.topic_id from Student as student where student.status=1)",teacher.getTeacher_id()));
-            sumBean.setTeacherCount(topicDao.countTopicByteacher("topic.topic_id in (select topicStatus.topicId from TopicStatus as topicStatus where topicStatus.topicBegin=1 and topicStatus.topicMid=1 and topicStatus.topicFinal=1)",teacher.getTeacher_id()));
+            sumBean.setTeacherCount(topicDao.countTopicByteacher("topic.topic_id in (select topicStatus.topicId from TopicStatus as topicStatus where topicStatus.topicBegin=2 and topicStatus.topicMid=2 and topicStatus.topicFinal=2)",teacher.getTeacher_id()));
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -253,6 +279,24 @@ public class TopicServiceImpl implements TopicService{
             e.printStackTrace();
         }
         return topicFinalInfo;
+    }
+
+    public TopicProcess getStudentPer() {
+        try {
+            return topicProcessDao.get();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public TopicCheckProcess getTeacherPer() {
+        try {
+            return topicCheckProcessDao.get();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }

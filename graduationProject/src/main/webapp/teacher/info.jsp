@@ -95,43 +95,43 @@
                                     <div class="control-group">
                                         <label class="control-label">工号</label>
                                         <div class="controls">
-                                            <input type="text" name="teacher.teacher_no" id="stuNo" readonly="readonly"/>
+                                            <input type="text" name="teacher.teacher_no" id="stuNo" readonly="readonly" value="${teacher.teacher_no}"/>
                                         </div>
                                     </div>
 									<div class="control-group">
 										<label class="control-label">姓名</label>
 										<div class="controls">
-											<input type="text" name="teacher.name" id="name" readonly="readonly"/>
+											<input type="text" name="teacher.name" id="name" readonly="readonly" value="${teacher.name}"/>
 										</div>
 									</div>
 									<div class="control-group">
 										<label class="control-label">学院</label>
 										<div class="controls">
-											<input type="text" name="teacher.college_name" id="collegeName" readonly="readonly"/>
+											<input type="text" name="teacher.college_name" id="collegeName" readonly="readonly" value="${teacher.college_name}"/>
 										</div>
 									</div>
 									<div class="control-group">
 										<label class="control-label">专业</label>
 										<div class="controls">
-											<input type="text" name="teacher.major_name" id="majorName" readonly="readonly"/>
+											<input type="text" name="teacher.major_name" id="majorName" readonly="readonly" value="${teacher.major_name}"/>
 										</div>
 									</div>
 									<div class="control-group">
 										<label class="control-label">联系电话</label>
 										<div class="controls">
-											<input type="text" name="teacher.tel_no" id="telNo"/>
+											<input type="text" name="teacher.tel_no" id="telNo" value="${teacher.tel_no}"/>
 										</div>
 									</div>
                                     <div class="control-group">
                                         <label class="control-label">Email</label>
                                         <div class="controls">
-                                            <input type="text" name="teacher.email" id="email" />
+                                            <input type="text" name="teacher.email" id="email"  value="${teacher.email}"/>
                                         </div>
                                     </div>
 									<div class="control-group">
 										<label class="control-label">QQ号码</label>
 										<div class="controls">
-											<input type="text" name="teacher.qq_no" id="qqNo"/>
+											<input type="text" name="teacher.qq_no" id="qqNo" value="${teacher.qq_no}"/>
 										</div>
 									</div>
                                     <div class="form-actions">
