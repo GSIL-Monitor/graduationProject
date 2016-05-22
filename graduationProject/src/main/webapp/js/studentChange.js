@@ -61,7 +61,6 @@ function processResult(){
     // 获得应答内容
     var result=xhr.responseText;
     var json=JSON.parse(result);
-    alert(result);
     var stuNo=getElement("stuNo");
     stuNo.value=json.stuNo;
     var name=getElement("name");

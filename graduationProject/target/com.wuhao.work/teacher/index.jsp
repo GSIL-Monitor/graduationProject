@@ -146,6 +146,16 @@
 					</div>
 				</div>
 				<div class="row-fluid">
+					<div class="span12">
+						<div class="widget-box widget-calendar">
+							<div class="widget-title"><span class="icon"><i class="icon-calendar"></i></span><h5>Calendar</h5></div>
+							<div class="widget-content nopadding">
+								<div class="calendar"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row-fluid">
 					<div id="footer" class="span12">
 						2016 &copy; Unicorn Admin. Brought to you by Wuhao</a>
 					</div>

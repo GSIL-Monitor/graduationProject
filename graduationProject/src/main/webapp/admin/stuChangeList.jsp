@@ -40,13 +40,6 @@
 		<ul>
 			<li class="active"><a href="adminAction_home"><i class="icon icon-home"></i> <span>我的桌面</span></a></li>
 			<li class="submenu">
-				<a href="#"><i class="icon icon-th-list"></i> <span>基本配置管理</span> <span class="label">2</span></a>
-				<ul>
-					<li><a href="adminAction_studentPer">学生权限控制</a></li>
-					<li><a href="adminAction_teacherPer">教师权限控制</a></li>
-				</ul>
-			</li>
-			<li class="submenu">
 				<a href="#"><i class="icon icon-file"></i> <span>用户管理</span> <span class="label">4</span></a>
 				<ul>
 					<li><a href="adminAction_stuCreate">创建学生账户</a></li>

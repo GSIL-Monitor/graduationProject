@@ -5,7 +5,10 @@ import com.beans.TopicStatus;
 import net.sf.json.JSON;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import javax.management.relation.Role;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
@@ -28,9 +31,12 @@ public class RoleUtils {
     }
 
     public static void main(String args[]){
-        Topic topic=new Topic();
-        String test=JSONObject.fromObject(topic).toString();
-        System.out.println(test);
+        Logger logger = LoggerFactory.getLogger(RoleUtils.class);
+        logger.debug("开始");
+        logger.debug("结束");
+//        Topic topic=new Topic();
+//        String test=JSONObject.fromObject(topic).toString();
+//        System.out.println(test);
 
     }
     public static double countScore(TopicStatus topicStatus){
@@ -55,6 +61,5 @@ public class RoleUtils {
         map.put(2,"审核已通过");
         return map.get(status);
     }
-
 
 }

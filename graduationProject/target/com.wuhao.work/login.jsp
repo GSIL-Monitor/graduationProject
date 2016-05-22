@@ -36,19 +36,19 @@
                     <span class="pull-right"><input type="submit" class="btn btn-inverse" value="登录" /></span>
                 </div>
             </form>
-            <form id="recoverform" action="userAction_recover" class="form-vertical" method="post" onsubmit="return recoverUser()"/>
+            <form id="recoverform" action="userAction_recover" class="form-vertical" method="post" onsubmit="return recoverUser();"/>
             <p>请输入您的用户名和邮箱</p>
                 <div class="control-group">
                     <div class="controls">
                         <div class="input-prepend">
-                            <span class="add-on"><i class="icon-user"></i></span><input type="text" placeholder="Username" name="username" />
+                            <span class="add-on"><i class="icon-user"></i></span><input type="text" placeholder="Username" name="username" id="recoverUser"/>
                         </div>
                     </div>
                 </div>
                 <div class="control-group">
                     <div class="controls">
                         <div class="input-prepend">
-                            <span class="add-on"><i class="icon-envelope"></i></span><input type="text" placeholder="E-mail address" name="email" />
+                            <span class="add-on"><i class="icon-envelope"></i></span><input type="text" placeholder="E-mail address" name="email" id="email"/>
                         </div>
                     </div>
                 </div>

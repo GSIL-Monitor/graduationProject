@@ -20,13 +20,6 @@
 		<div id="user-nav" class="navbar navbar-inverse">
 			<ul class="nav btn-group">
 				<li class="btn btn-inverse"><a title="" href="adminAction_change"><i class="icon icon-user"></i> <span class="text">密码修改</span></a></li>
-				<li class="btn btn-inverse dropdown" id="menu-messages"><a href="#" data-toggle="dropdown" data-target="#menu-messages" class="dropdown-toggle"><i class="icon icon-envelope"></i> <span class="text">邮箱</span><b class="caret"></b></a>
-					<ul class="dropdown-menu">
-						<li><a class="sAdd" title="" href="#">发送信息</a></li>
-						<li><a class="sInbox" title="" href="#">收件箱</a></li>
-						<li><a class="sOutbox" title="" href="#">已发出信息</a></li>
-					</ul>
-				</li>
 				<li class="btn btn-inverse"><a title="" href="userAction_logout"><i class="icon icon-share-alt"></i> <span class="text">退出登录</span></a></li>
 			</ul>
 		</div>
@@ -145,6 +138,16 @@
 								</div>							
 							</div>
 						</div>					
+					</div>
+				</div>
+				<div class="row-fluid">
+					<div class="span12">
+						<div class="widget-box widget-calendar">
+							<div class="widget-title"><span class="icon"><i class="icon-calendar"></i></span><h5>Calendar</h5></div>
+							<div class="widget-content nopadding">
+								<div class="calendar"></div>
+							</div>
+						</div>
 					</div>
 				</div>
 				<div class="row-fluid">
