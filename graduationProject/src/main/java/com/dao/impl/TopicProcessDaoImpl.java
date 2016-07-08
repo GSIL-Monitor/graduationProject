@@ -23,6 +23,7 @@ public class TopicProcessDaoImpl implements TopicProcessDao{
 
 
 	public void saveTopicProcess(TopicProcess topicProcess) throws Exception {
+		System.out.println("sql:" + topicProcess.toString());
 		Session session;//hibernate会话
 		Transaction transaction; //hiberante事务
 		session=sessionFactory.openSession();
@@ -32,10 +33,10 @@ public class TopicProcessDaoImpl implements TopicProcessDao{
 		List<TopicProcess> list=query.list();
 		if (!list.isEmpty()){
 			TopicProcess sqltopicProcess=list.get(0);
-			sqltopicProcess.setChoiceBegin(topicProcess.getTopicBegin());
-			sqltopicProcess.setChoiceEnd(topicProcess.getTopicEnd());
+			sqltopicProcess.setChoiceBegin(topicProcess.getChoiceBegin());
+			sqltopicProcess.setChoiceEnd(topicProcess.getChoiceEnd());
 			sqltopicProcess.setTopicBegin(topicProcess.getTopicBegin());
-			sqltopicProcess.setTopicEnd(topicProcess.getTopicFinalEnd());
+			sqltopicProcess.setTopicEnd(topicProcess.getTopicEnd());
 			sqltopicProcess.setTopicMidBegin(topicProcess.getTopicMidBegin());
 			sqltopicProcess.setTopicMidEnd(topicProcess.getTopicMidEnd());
 			sqltopicProcess.setTopicFinalBegin(topicProcess.getTopicFinalBegin());

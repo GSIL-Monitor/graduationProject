@@ -20,4 +20,10 @@ public class Test {
         msg.setSentDate(new Date());
         Address address = new InternetAddress("president@whitehouse.gov", "George Bush");
     }
+    public static void testA(String a,String b){
+
+    }
+    public static void testA(){
+
+    }
 }

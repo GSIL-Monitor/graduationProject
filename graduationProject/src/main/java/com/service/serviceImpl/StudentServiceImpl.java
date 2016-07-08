@@ -180,6 +180,7 @@ public class StudentServiceImpl implements StudentService{
 
     public void addPer(TopicProcess topicProcess) {
         try {
+            System.out.println("topic"+topicProcess.toString());
             FileUtils.saveper("student", JSONObject.fromObject(topicProcess).toString());
             topicProcessDao.saveTopicProcess(topicProcess);
         }catch (Exception e){
